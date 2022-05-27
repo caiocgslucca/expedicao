@@ -1,7 +1,7 @@
 <?php
+include('verifica_login.php');
 // include('manutencao.html');
 // exit();
-include('verifica_login.php');
 // session_start();
 error_reporting(E_ERROR | E_PARSE);
 include('conexao.php');
@@ -24,6 +24,7 @@ if ($destino == "" || $destino == "Selecionar a estação") {
     // echo "<script> alert (' ( $usuario ) Estação não selecionada'); </script>";
 
 ?>
+<title>Destino</title>
 <div class="modal fade" id="modalSubscriptionForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">

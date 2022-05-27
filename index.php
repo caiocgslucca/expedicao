@@ -4,7 +4,7 @@ session_start();
 include('Header_CSS_JS.php');
 
 ?>
-
+ <title>Login</title>
 <div class="row">
     <div class="col-sm"></div>
     <div class="col-sm"> <img src="./images-on-off/paytec.png" width="900%" height="900%" class="img-fluid z-depth-1" alt="Responsive image"> </div>
