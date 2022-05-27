@@ -34,11 +34,11 @@ if (empty($_GET['dateini'])) {
         <thead>
             <tr>
                         
-                        <th class="th-sm"><?php echo utf8_decode("IMEI"); ?></th>
-                        <th class="th-sm"><?php echo utf8_decode("Marca"); ?></th>
+                        <th class="th-sm"><?php echo utf8_decode("Codigo"); ?></th>
+                        <!-- <th class="th-sm"><?php echo utf8_decode("Marca"); ?></th>
                         <th class="th-sm"><?php echo utf8_decode("Modelo"); ?></th>
                         <th class="th-sm"><?php echo utf8_decode("Produto"); ?></th>
-                        <th class="th-sm"><?php echo utf8_decode("Condição"); ?></th>
+                        <th class="th-sm"><?php echo utf8_decode("Condição"); ?></th> -->
                         <th class="th-sm"><?php echo utf8_decode("Destino"); ?></th>
                         <th class="th-sm"><?php echo utf8_decode("Usuario"); ?></th>
                         <th class="th-sm"><?php echo utf8_decode("DATA HORA"); ?></th>
@@ -62,10 +62,10 @@ if (empty($_GET['dateini'])) {
             ?>
                 <tr>
                             <td> <?php echo utf8_decode("'".$row['imei']) ?> </td>
-                            <td> <?php echo utf8_decode($row['marca']) ?> </td>
+                            <!-- <td> <?php echo utf8_decode($row['marca']) ?> </td>
                             <td> <?php echo utf8_decode($row['modelo']) ?> </td>
                             <td> <?php echo utf8_decode($row['produto']) ?> </td>
-                            <td> <?php echo utf8_decode($row['condicao']) ?> </td>
+                            <td> <?php echo utf8_decode($row['condicao']) ?> </td> -->
                             <td> <?php echo utf8_decode($row['destino']) ?> </td>
                             <td> <?php echo utf8_decode($row['usuario']) ?> </td>
                             <td> <?php echo date('d/m/Y H:i:s', strtotime($row['data_hora'])) ?> </td>
@@ -93,11 +93,11 @@ if (empty($_GET['dateini'])) {
 
 <thead>
                         <tr>
-                        <th class="th-sm"><?php echo utf8_decode("IMEI"); ?></th>
-                        <th class="th-sm"><?php echo utf8_decode("Marca"); ?></th>
+                        <th class="th-sm"><?php echo utf8_decode("Codigo"); ?></th>
+                        <!-- <th class="th-sm"><?php echo utf8_decode("Marca"); ?></th>
                         <th class="th-sm"><?php echo utf8_decode("Modelo"); ?></th>
                         <th class="th-sm"><?php echo utf8_decode("Produto"); ?></th>
-                        <th class="th-sm"><?php echo utf8_decode("Condição"); ?></th>
+                        <th class="th-sm"><?php echo utf8_decode("Condição"); ?></th> -->
                         <th class="th-sm"><?php echo utf8_decode("Destino"); ?></th>
                         <th class="th-sm"><?php echo utf8_decode("Usuario"); ?></th>
                         <th class="th-sm"><?php echo utf8_decode("DATA HORA"); ?></th>
@@ -120,10 +120,10 @@ if (empty($_GET['dateini'])) {
                         ?>
                             <tr>
                             <td> <?php echo utf8_decode("'".$row['imei']) ?> </td>
-                            <td> <?php echo utf8_decode($row['marca']) ?> </td>
+                            <!-- <td> <?php echo utf8_decode($row['marca']) ?> </td>
                             <td> <?php echo utf8_decode($row['modelo']) ?> </td>
                             <td> <?php echo utf8_decode($row['produto']) ?> </td>
-                            <td> <?php echo utf8_decode($row['condicao']) ?> </td>
+                            <td> <?php echo utf8_decode($row['condicao']) ?> </td> -->
                             <td> <?php echo utf8_decode($row['destino']) ?> </td>
                             <td> <?php echo utf8_decode($row['usuario']) ?> </td>
                             <td> <?php echo date('d/m/Y H:i:s', strtotime($row['data_hora'])) ?> </td>

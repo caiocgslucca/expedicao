@@ -148,10 +148,10 @@ $datahora = (date('H:i:s d-m-Y'));
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <!-- <a class="dropdown-item" href="dymo.php">Etiqueta SAMSUNG</a> -->
                     <a class="dropdown-item" href="destino.php">Produção</a>
-                    <!-- <a class="dropdown-item" href="receber_pcp.php">Receber PCP</a>
+                    <!-- <a class="dropdown-item" href="receber_pcp.php">Receber PCP</a> -->
                     <a class="dropdown-item" href="gerenciar.php">Gerenciar</a>
-                    <a class="dropdown-item" href="importar_csv_95.php">Importar CSV</a>
-                    <a class="dropdown-item" href="pesquisar.php">Pesquisar</a> -->
+                    <!-- <a class="dropdown-item" href="importar_csv_95.php">Importar CSV</a> -->
+                    <!-- <a class="dropdown-item" href="pesquisar.php">Pesquisar</a> -->
                     <a class="dropdown-item" href="logout.php">Sair</a>
                 </div>
             </div>

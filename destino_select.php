@@ -140,7 +140,7 @@ if (senha != 1) {
             <thead>
                 <tr>
 
-                    <th class="th-sm">IMEI</th>
+                    <th class="th-sm">Codigo</th>
                     <!-- <th class="th-sm">Marca</th> -->
                     <!-- <th class="th-sm">Modelo</th> -->
                     <!-- <th class="th-sm">Produto</th> -->
