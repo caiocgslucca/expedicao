@@ -136,6 +136,7 @@ if (@empty($_POST['login'])) {
                 $inserir = "INSERT INTO `usuario`(`usuario_id`, `usuario`, `senha`, `email`, `setor`, `nivel`,`status`,`usuario_criacao`,`data_hora`)
                   VALUES (null, '$login', '$senha', '$emailcriar', '$setor', '0','1','$usuario','$datahora')";
                 $conexaoinserir = mysqli_query($conexao, $inserir);
+
                 if ($conexaoinserir) {
                     require_once('phpmailer/class.phpmailer.php');
                     $mail = new PHPMailer();
@@ -148,6 +149,7 @@ if (@empty($_POST['login'])) {
                     $mail->IsSMTP();
                     $mail->SMTPAuth = true;
                     $mail->Port = '587';
+                    $mail->SMTPSecure = 'tls';
                     $mail->Host = "smtp.hostinger.com.br";
                     $mail->Username = "contato@controle360grau.com.br";
                     $mail->Password =   "842413Ka@";
