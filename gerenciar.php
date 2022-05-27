@@ -22,9 +22,9 @@ $data = date("d/m/Y");
         <li class="nav-item">
             <a class="nav-link " href="historico.php">Historico</a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
             <a class="nav-link " href="receber.php">Receber</a>
-        </li>
+        </li> -->
 
     </ul>
 
