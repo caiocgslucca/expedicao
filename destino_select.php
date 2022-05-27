@@ -110,7 +110,7 @@ if (senha != 1) {
             <!-- <textarea name="biper[]" value="" class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="3"></textarea> -->
             <!-- </div> -->
             <div class="form-outline">
-                <input name="biper" autofocus type="text" id="form12" class="form-control" />
+                <input required name="biper" autofocus type="text" id="form12" class="form-control" />
                 <label class="form-label " for="form12">Bipar</label>
             </div>
         </div>
