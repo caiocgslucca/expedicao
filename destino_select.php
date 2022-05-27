@@ -19,12 +19,23 @@ $datahora = (date('Y-m-d H:i:s'));
 $datahorainicio = (date('y-m-d 00:00:00'));
 $datahorafinal = (date('y-m-d 23:59:59'));
 
+?>
+<!DOCTYPE html>
+<html lang="pr-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expedição</title>
+</head>
+<body>
+
+<?php
 
 if ($destino == "" || $destino == "Selecionar a estação") {
     // echo "<script> alert (' ( $usuario ) Estação não selecionada'); </script>";
 
 ?>
-<title>Destino</title>
 <div class="modal fade" id="modalSubscriptionForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
