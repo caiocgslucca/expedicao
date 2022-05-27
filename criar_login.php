@@ -153,7 +153,7 @@ if (@empty($_POST['login'])) {
                     $mail->Password =   "842413Ka@";
                     $mail->Subject  = utf8_decode("Criado login para: $login");
                     $mail->From = $mail->Username;
-                    $mail->FromName = "Smartprod";
+                    $mail->FromName = "Controle360grau";
                     $mail->AddAddress($emailcriar);
                     $mail->Body = "<html>
                                 <head>
