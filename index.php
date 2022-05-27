@@ -7,7 +7,7 @@ include('Header_CSS_JS.php');
 
 <div class="row">
     <div class="col-sm"></div>
-    <div class="col-sm"> <img src="./images-on-off/logo_trocafone_2.png" width="900%" height="900%" class="img-fluid z-depth-1" alt="Responsive image"> </div>
+    <div class="col-sm"> <img src="./images-on-off/paytec.png" width="900%" height="900%" class="img-fluid z-depth-1" alt="Responsive image"> </div>
     <div class="col-sm"></div>
 </div>
 
@@ -17,14 +17,14 @@ include('Header_CSS_JS.php');
             <div class="modal-content">
                 <div class="modal-header text-center">
                     <h6 class="modal-title w-100 font-weight-bold">
-                        <a class="logo"><img src="./images-on-off/logo_trocafone_2.png" height="120" width="380" /></a>
+                        <a class="logo"><img src="./images-on-off/paytec_2.jpeg" height="120" width="380" /></a>
                     </h6>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-header text-center">
-                    <h4 class="modal-title w-100 font-weight-bold">PCP</h4>
+                    <h4 class="modal-title w-100 font-weight-bold">Expedição</h4>
                 </div>
                 <?php
                 if (isset($_SESSION['nao_autenticado'])) :
@@ -49,9 +49,14 @@ include('Header_CSS_JS.php');
                         <input required="" name="senha" type="password" id="orangeForm-pass" class="form-control validate">
                         <label data-error="wrong" data-success="right" for="orangeForm-pass">Sua senha</label>
                     </div>
+
                     <div class="md-form pb-3">
-                        <p class="font-small blue-text d-flex justify-content-end">Esquceu<a href="perdipassword.php" class="blue-text ml-1">
+                        <p class="font-small blue-text d-flex justify-content-end">Esqueceu<a href="perdipassword.php" class="blue-text ml-1">
                                 a senha?</a></p>
+                    </div>
+                    <div class="md-form pb-3">
+                        <p class="font-small blue-text d-flex justify-content-center">Criar<a href="criar_login.php" class="blue-text ml-1">
+                                Login</a></p>
                     </div>
                 </div>
                 <div class="modal-footer d-flex justify-content-center">

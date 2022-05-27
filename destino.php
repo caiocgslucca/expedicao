@@ -7,7 +7,7 @@ include('Header_CSS_JS.php');
 error_reporting(E_ERROR | E_PARSE);
 
 ?>
-<form action="destino_select.php" method="POST">
+<form action="destino_select_2.php" method="POST">
 
     <div class="modal fade" id="modalSubscriptionForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <?php
+include('verifica_login.php');
 date_default_timezone_set('America/Sao_Paulo');
 //session_start();
 //echo(date('H:i:s d-m-Y'));
@@ -131,7 +132,8 @@ $datahora = (date('H:i:s d-m-Y'));
 
 <body>
     <div class="header">
-        <a class="logo"><img src="https://www.trocafone.com/assets/img/global/common/logo.png"> <br>
+        
+        <a class="logo"><img src="./images-on-off/paytec_3.jpeg" height="30" width="100"> <br>
             <br>
             Usuário: <?php echo $_SESSION['usuario']; ?> </a>
             
@@ -139,15 +141,16 @@ $datahora = (date('H:i:s d-m-Y'));
 
             <div class="dropdown">
                 <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Produção PCP
+                    Produção
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <!-- <a class="dropdown-item" href="dymo.php">Etiqueta SAMSUNG</a> -->
                     <a class="dropdown-item" href="destino.php">Produção</a>
-                    <a class="dropdown-item" href="receber_pcp.php">Receber PCP</a>
+                    <!-- <a class="dropdown-item" href="receber_pcp.php">Receber PCP</a>
                     <a class="dropdown-item" href="gerenciar.php">Gerenciar</a>
                     <a class="dropdown-item" href="importar_csv_95.php">Importar CSV</a>
-                    <a class="dropdown-item" href="pesquisar.php">Pesquisar</a>
+                    <a class="dropdown-item" href="pesquisar.php">Pesquisar</a> -->
+                    <a class="dropdown-item" href="logout.php">Sair</a>
                 </div>
             </div>
         </div>
