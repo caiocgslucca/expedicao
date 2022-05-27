@@ -10,6 +10,8 @@ $datahora = (date('H:i:s d-m-Y'));
 <html>
 
 <head>
+  <link rel="shortcut icon"  href="./images-on-off/paytec.ico"><!--este comando muda o icone da janela-->
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         * {
