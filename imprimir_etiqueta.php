@@ -66,7 +66,9 @@ include ('barcode128.php');
 
       $voucher = $_SESSION['voucher'];
 
-
+      $usuario;
+      
+      $datahora;
       // echo $modelo = $_SESSION['modelo'] . " - " . $etiqueta = $_SESSION['etiqueta'];
       echo "<br>";
 
@@ -85,7 +87,9 @@ include ('barcode128.php');
           height: 30,
           width: 2,
           fontSize: 10,
-          text: "<?php echo $biper; ?>"
+          text: "<?php echo $biper . " - " .$usuario . " - " . date('d/m/Y H:i:s', strtotime($datahora)) ; ?>",
+          
+
         });
       </script>
 
