@@ -10,7 +10,7 @@ $usuario = $_SESSION['usuario'];
 $id_status = 1;
 $data = date("Y/m/d");
 
-$arquivo = $datahora.'_'.'PCP_producao.xls';
+$arquivo = $datahora.'_'.'producao.xls';
 header ("Content-Type: application/xls");
 header ("Content-Disposition: attachment; filename= {$arquivo}" );
 
@@ -34,6 +34,7 @@ if (empty($_GET['dateini'])) {
         <thead>
             <tr>
                         
+                        <th class="th-sm"><?php echo utf8_decode("#"); ?></th>
                         <th class="th-sm"><?php echo utf8_decode("Codigo"); ?></th>
                         <!-- <th class="th-sm"><?php echo utf8_decode("Marca"); ?></th>
                         <th class="th-sm"><?php echo utf8_decode("Modelo"); ?></th>
@@ -54,13 +55,14 @@ if (empty($_GET['dateini'])) {
             // where  DATE_FORMAT(data_hora, '%d/%m/%Y') = '$data'
             // $result_usuarios = ("SELECT * FROM `testefull` WHERE  `id_status` IN ('1')  AND DATE_FORMAT(data_hora, '%d/%m/%Y') BETWEEN '$data' AND '$data' ORDER BY `testefull`.`data_hora` DESC");
             // $result_usuarios = ("SELECT * FROM `testefull` WHERE  `id_status` = 1  AND `data_hora` BETWEEN '$data 00:00:00' AND '$data 23:59:59' ORDER BY `testefull`.`data_hora` DESC");
-            $result_usuarios = ("SELECT * FROM `pcp_producao` WHERE  `data_hora` BETWEEN '$data 00:00:00' AND '$data 23:59:59' GROUP BY `pcp_producao`.`imei` ORDER BY `pcp_producao`.`data_hora` ASC");
-            
+            $result_usuarios = ("SELECT * FROM `pcp_producao` WHERE  `data_hora` BETWEEN '$data 00:00:00' AND '$data 23:59:59' ORDER BY `pcp_producao`.`data_hora` ASC");
+            $index = 1;
             $resultado_usuarios = mysqli_query($conexao, $result_usuarios);
             while ($row = mysqli_fetch_assoc($resultado_usuarios)) {
 
             ?>
                 <tr>
+                            <td> <?php echo $index ?> </td>
                             <td> <?php echo utf8_decode("'".$row['imei']) ?> </td>
                             <!-- <td> <?php echo utf8_decode($row['marca']) ?> </td>
                             <td> <?php echo utf8_decode($row['modelo']) ?> </td>
@@ -74,7 +76,7 @@ if (empty($_GET['dateini'])) {
                             <td> <?php echo date('Y', strtotime($row['data_hora'])) ?> </td>
                             </tr>
 
-            <?php }; ?>
+            <?php $index ++; }; ?>
 
         </tbody>
     </table>
@@ -93,6 +95,7 @@ if (empty($_GET['dateini'])) {
 
 <thead>
                         <tr>
+                        <th class="th-sm"><?php echo utf8_decode("#"); ?></th>
                         <th class="th-sm"><?php echo utf8_decode("Codigo"); ?></th>
                         <!-- <th class="th-sm"><?php echo utf8_decode("Marca"); ?></th>
                         <th class="th-sm"><?php echo utf8_decode("Modelo"); ?></th>
@@ -112,13 +115,14 @@ if (empty($_GET['dateini'])) {
                         // where  DATE_FORMAT(data_hora, '%d/%m/%Y') = '$data'
                         // $result_usuarios = ("SELECT * FROM `testefull` WHERE  `id_status` = 1 AND `data_hora` BETWEEN '$Datainicio 00:00:00' AND '$Datafinal 23:59:59' ORDER BY `testefull`.`data_hora` DESC");
                         // $result_usuarios = ("SELECT * FROM `testefull` WHERE  `id_status` = 1  AND `data_hora` BETWEEN '$Datainicio 00:00:00' AND '$Datafinal 23:59:59' ORDER BY `testefull`.`data_hora` DESC");
-                        $result_usuarios = ("SELECT * FROM `pcp_producao` WHERE  `data_hora` BETWEEN '$Datainicio 00:00:00' AND '$Datafinal 23:59:59' GROUP BY `pcp_producao`.`imei` ORDER BY `pcp_producao`.`data_hora` ASC");
-                        
+                        $result_usuarios = ("SELECT * FROM `pcp_producao` WHERE  `data_hora` BETWEEN '$Datainicio 00:00:00' AND '$Datafinal 23:59:59' ORDER BY `pcp_producao`.`data_hora` ASC");
+                        $index = 1;
                         $resultado_usuarios = mysqli_query($conexao, $result_usuarios);
                         while ($row = mysqli_fetch_assoc($resultado_usuarios)) {
 
                         ?>
                             <tr>
+                            <td> <?php echo $index ?> </td>
                             <td> <?php echo utf8_decode("'".$row['imei']) ?> </td>
                             <!-- <td> <?php echo utf8_decode($row['marca']) ?> </td>
                             <td> <?php echo utf8_decode($row['modelo']) ?> </td>
@@ -132,7 +136,7 @@ if (empty($_GET['dateini'])) {
                             <td> <?php echo date('Y', strtotime($row['data_hora'])) ?> </td>
                             </tr>
 
-                        <?php }; ?>
+                        <?php $index ++; }; ?>
 
                     </tbody>
 

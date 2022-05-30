@@ -140,10 +140,10 @@ $datahoje = date("Y-m-d");
                 <thead>
                     <tr>
                     <th class="th-sm">IMEI</th>
-                    <th class="th-sm">Marca</th>
+                    <!-- <th class="th-sm">Marca</th>
                     <th class="th-sm">Modelo</th>
                     <th class="th-sm">Produto</th>
-                    <th class="th-sm">Condição</th>
+                    <th class="th-sm">Condição</th> -->
                     <th class="th-sm">Destino</th>
                     <th class="th-sm">Usuario</th>
                     <th class="th-sm">Data Hora</th>
@@ -163,10 +163,10 @@ $datahoje = date("Y-m-d");
                     ?>
                         <tr>
                         <td> <?php echo $row['imei'] ?> </td>
-                        <td> <?php echo $row['marca'] ?> </td>
+                        <!-- <td> <?php echo $row['marca'] ?> </td>
                         <td> <?php echo $row['modelo'] ?> </td>
                         <td> <?php echo $row['produto'] ?> </td>
-                        <td> <?php echo $row['condicao'] ?> </td>
+                        <td> <?php echo $row['condicao'] ?> </td> -->
                         <td> <?php echo $row['destino'] ?> </td>
                         <td> <?php echo $row['usuario'] ?> </td>
                         <td> <?php echo date('d/m/Y H:i:s', strtotime($row['data_hora'])) ?> </td>

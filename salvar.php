@@ -48,10 +48,10 @@ $erro = 0;
 
 // @$erro_incluir = implode("; ", $ID_incluir);
 
-
 if (@$salvar == 1) {
-
+    include('imprimir_etiqueta.php');
 ?>
+
 
     <form action="destino_select.php" method="POST">
 
@@ -107,7 +107,7 @@ if (@$salvar == 1) {
         }
         </script>
 <?php
-    echo '<meta http-equiv="refresh" content="1;URL=destino_select.php" />';
+    echo '<meta http-equiv="refresh" content="3;URL=destino_select.php" />';
     exit();
 } else {
 ?>

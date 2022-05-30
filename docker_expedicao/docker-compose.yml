@@ -1,0 +1,65 @@
+version: '3'
+services:
+
+  #PHP Service
+  app:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    container_name: app_expedicao
+    restart: unless-stopped
+    ports:
+      - "90:80"
+      - "449:443"
+    environment:
+      SERVICE_NAME: app
+      SERVICE_TAGS: dev
+      LUMEN_HOST: http://app/a
+    working_dir: /var/www/html
+    volumes:
+      - ./../:/var/www/html
+      - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
+    networks:
+      - app-network
+    depends_on:
+      - db
+
+  #MySQL Service
+  db:
+    image: mariadb:10.5.11
+    container_name: db_expedicao
+    restart: unless-stopped
+    ports:
+      - "3309:3306"
+    environment:
+      MYSQL_DATABASE: u103814480_controle360gra
+      MYSQL_USER: root
+      MYSQL_ROOT_PASSWORD: "#tr0caf0ne#"
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    volumes:
+      - ./mysql/my.cnf:/etc/mysql/my.cnf
+      - ./mysql/u103814480_controle360gra.sql:/docker-entrypoint-initdb.d/u103814480_controle360gra.sql
+    networks:
+      - app-network
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - 9090:80
+    environment:
+      - PMA_HOST=db
+      - UPLOAD_LIMIT=900M
+    depends_on:
+      - db
+    networks:
+      - app-network
+
+#Docker Networks
+networks:
+  app-network:
+    driver: bridge
+
+#Volumes
+volumes:
+  dbdata:
+    driver: local
