@@ -49,7 +49,7 @@ $erro = 0;
 // @$erro_incluir = implode("; ", $ID_incluir);
 
 if (@$salvar == 1) {
-    include('imprimir_etiqueta.php');
+    // include('imprimir_etiqueta.php');
 ?>
 
 

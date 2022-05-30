@@ -148,6 +148,7 @@ if (senha != 1) {
                     <th class="th-sm">Destino</th>
                     <th class="th-sm">Usuario</th>
                     <th class="th-sm">Data Hora</th>
+                    <th class="th-sm text-center">Ação</th>
                 </tr>
             </thead>
             <tbody>
@@ -171,6 +172,21 @@ if (senha != 1) {
                     <td> <?php echo $row['destino'] ?> </td>
                     <td> <?php echo $row['usuario'] ?> </td>
                     <td> <?php echo date('d/m/Y H:i:s', strtotime($row['data_hora'])) ?> </td>
+                    
+                    <td class="row-actions text-center">
+
+                        <form  target="_blank" method="POST" action="imprimir_etiqueta.php" enctype="multipart/form-data">
+                            <!-- <a href="imprimir_etiqueta.php?imei=<?php echo $row['imei'] ?>&usuario=<?php echo $usuario ?>" target="_blank" data-toggle="tooltip" data-placement="top" title="" data-original-title="Mostrar"><i class="fa fa-eye"></i></a> -->
+                            <button type="submit" class="btn btn-light">Imprimir</button>
+
+                            <input  name="imei"  type="hidden" value="<?php echo $row['imei'] ?>" class="form-control" />
+                            <input  name="usuario" type="hidden" value = "<?php echo $usuario ?>" class="form-control" />
+                            <!-- <button type="submit" class="btn btn-success">Salvar</button> -->
+
+                        </form>
+
+
+                        </td>
                 </tr>
 
                 <?php }; ?>

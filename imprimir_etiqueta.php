@@ -1,9 +1,9 @@
 <?php
 session_start();
 include ('barcode128.php');
-// include('verifica_login.php');
-  // error_reporting(E_ERROR | E_PARSE);
-  // include('conexao.php');
+include('verifica_login.php');
+error_reporting(E_ERROR | E_PARSE);
+include('conexao.php');
 
   date_default_timezone_set('America/recife');
   //date_default_timezone_set('America/Recife');
@@ -57,21 +57,24 @@ include ('barcode128.php');
 <div class="op1">
     
       <?php
+
+    $imei = $_POST['imei'];
+    $usuario = $_POST['usuario'];
+
+$recebidos2 = ("SELECT * FROM `pcp_producao` WHERE imei = '$imei' and usuario = '$usuario' ORDER BY `pcp_producao`.`data_hora` DESC");
+$recebidos3 = mysqli_query($conexao, $recebidos2);
+
+while ($row = mysqli_fetch_assoc($recebidos3)) {
     
-      $data = (date('d-m'));
-      
-      // print_r($biper);
+  $biper = $row['imei'];
+  $datahora = $row['data_hora'];
+  $usuario = $row['usuario'];
 
-      $usuario = $_SESSION['usuario'];
 
-      $voucher = $_SESSION['voucher'];
-
-      $usuario;
-      
-      $datahora;
+};
+    
       // echo $modelo = $_SESSION['modelo'] . " - " . $etiqueta = $_SESSION['etiqueta'];
       echo "<br>";
-
 
       ?>
 
@@ -94,12 +97,12 @@ include ('barcode128.php');
       </script>
 
       <?php
-      echo "
-      <script>
-      window.print();
-      setTimeout('window.close()', 10);
-      </script>
-      ";
+      // echo "
+      // <script>
+      // window.print();
+      // setTimeout('window.close()', 10);
+      // </script>
+      // ";
       ?>
     </page>
   </div>
