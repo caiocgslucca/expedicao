@@ -8,19 +8,19 @@ $usuario = $_SESSION['usuario'];
 include('conexao.php');
 $data = date("d/m/Y");
 
-$nivel = $_SESSION['usuario'];
-$nivel_necessario = 1;
+// $nivel = $_SESSION['usuario'];
+// $nivel_necessario = 1;
 
-$sql = "SELECT `usuario`, `nivel`  FROM `usuario` WHERE (`usuario` = '" . $nivel . "') AND (`nivel` = '" . ($nivel_necessario) . "') LIMIT 1";
-$query = mysqli_query($conexao, $sql);
+// $sql = "SELECT `usuario`, `nivel`  FROM `usuario` WHERE (`usuario` = '" . $nivel . "') AND (`nivel` = '" . ($nivel_necessario) . "') LIMIT 1";
+// $query = mysqli_query($conexao, $sql);
 
-if (mysqli_num_rows($query) != 1) {
-    // Mensagem de erro quando os dados são inválidos e/ou o usuário não foi encontrado
-    // echo "  Usuário ( $usuario ) sem acesso a esta página";
-    echo "<script> alert (' ( $usuario ) sem acesso a esta página!')</script>";
-    echo '<meta http-equiv="refresh" content="0;URL=index.php" />';
-    exit;
-}
+// if (mysqli_num_rows($query) != 1) {
+//     // Mensagem de erro quando os dados são inválidos e/ou o usuário não foi encontrado
+//     // echo "  Usuário ( $usuario ) sem acesso a esta página";
+//     echo "<script> alert (' ( $usuario ) sem acesso a esta página!')</script>";
+//     echo '<meta http-equiv="refresh" content="0;URL=index.php" />';
+//     exit;
+// }
 
 ?>
 <title>Gerenciar</title>
