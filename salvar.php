@@ -107,7 +107,7 @@ if (@$salvar == 1) {
         }
         </script>
 <?php
-    echo '<meta http-equiv="refresh" content="3;URL=destino_select.php" />';
+    echo '<meta http-equiv="refresh" content="1;URL=destino_select.php" />';
     exit();
 } else {
 ?>
