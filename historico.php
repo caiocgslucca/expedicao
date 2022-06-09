@@ -22,7 +22,7 @@ $datahoje = date("Y-m-d");
 
 <body>
 
-<ul class="nav nav-tabs justify-content-center lighten-4 py-4">
+    <ul class="nav nav-tabs justify-content-center lighten-4 py-4">
         <li class="nav-item">
             <a class="nav-link " href="destino.php">Produtividade</a>
         </li>
@@ -47,7 +47,7 @@ $datahoje = date("Y-m-d");
                         <div class=" row justify-content-md-center">
 
 
-<!-- <h1> JOÂO CLICK NO BOTÃO BUSCAR PARA SELECIONAR O PERIODO  </h1> -->
+                            <!-- <h1> JOÂO CLICK NO BOTÃO BUSCAR PARA SELECIONAR O PERIODO  </h1> -->
 
                             <div class="col-sm-3">
                                 <div class="md-form md-outline input-with-post-icon datepicker">
@@ -73,28 +73,29 @@ $datahoje = date("Y-m-d");
         if (empty($_POST['dateinicio'])) {
             $vazio = "";
         ?>
-            <?php
+        <?php
             echo '<td><a button class="btn btn-success" href="export.php?dateini=' . "" . '">Clique aqui para fazer o download <p> Referente à Data: ' . $data . '</p> </a></td>';
             echo "<br>";
             ?>
-            <div class="flex-center flex-column">
-                <div class="card card-body">
-                    <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
-                        <thead>
-                            <tr>
+        <div class="flex-center flex-column">
+            <div class="card card-body">
+                <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0"
+                    width="100%">
+                    <thead>
+                        <tr>
                             <th class="th-sm">CODIGO</th>
-                    <!-- <th class="th-sm">Marca</th>
+                            <!-- <th class="th-sm">Marca</th>
                     <th class="th-sm">Modelo</th>
                     <th class="th-sm">Produto</th>
                     <th class="th-sm">Condição</th> -->
-                    <th class="th-sm">Destino</th>
-                    <th class="th-sm">Usuario</th>
-                    <th class="th-sm">Data Hora</th>
-                            </tr>
-                        </thead>
-                        <tbody>
+                            <th class="th-sm">Destino</th>
+                            <th class="th-sm">Usuario</th>
+                            <th class="th-sm">Data Hora</th>
+                        </tr>
+                    </thead>
+                    <tbody>
 
-                            <?php
+                        <?php
                             $recebidos2 = ("SELECT * FROM `pcp_producao` WHERE  `data_hora` BETWEEN '$datahoje 00:00:00' AND '$datahoje 23:59:59' ORDER BY `pcp_producao`.`data_hora` DESC");
 
                             // $recebidos2 =("SELECT * FROM `testefull` WHERE `usuario` = '$usuario' AND `data_hora` BETWEEN '$datahorainicio' AND '$datahorafinal' ORDER BY `data_hora` DESC");                   
@@ -104,27 +105,27 @@ $datahoje = date("Y-m-d");
                                
 
                             ?>
-                                <tr>
-                                <td> <?php echo $row['imei'] ?> </td>
-                        <!-- <td> <?php echo $row['marca'] ?> </td>
+                        <tr>
+                            <td> <?php echo $row['imei'] ?> </td>
+                            <!-- <td> <?php echo $row['marca'] ?> </td>
                         <td> <?php echo $row['modelo'] ?> </td>
                         <td> <?php echo $row['produto'] ?> </td>
                         <td> <?php echo $row['condicao'] ?> </td> -->
-                        <td> <?php echo $row['destino'] ?> </td>
-                        <td> <?php echo $row['usuario'] ?> </td>
-                        <td> <?php echo date('d/m/Y H:i:s', strtotime($row['data_hora'])) ?> </td>
-                                </tr>
+                            <td> <?php echo $row['destino'] ?> </td>
+                            <td> <?php echo $row['usuario'] ?> </td>
+                            <td> <?php echo date('d/m/Y H:i:s', strtotime($row['data_hora'])) ?> </td>
+                        </tr>
 
-                            <?php }; ?>
+                        <?php }; ?>
 
-                        </tbody>
-                    </table>
-                </div>
+                    </tbody>
+                </table>
             </div>
-            <br>
+        </div>
+        <br>
     </div>
     </div>
-<?php
+    <?php
         } else {
 
             $Datainicio = date('Y-m-d', strtotime($_POST['dateinicio']));
@@ -139,14 +140,14 @@ $datahoje = date("Y-m-d");
             <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
                 <thead>
                     <tr>
-                    <th class="th-sm">IMEI</th>
-                    <!-- <th class="th-sm">Marca</th>
+                        <th class="th-sm">IMEI</th>
+                        <!-- <th class="th-sm">Marca</th>
                     <th class="th-sm">Modelo</th>
                     <th class="th-sm">Produto</th>
                     <th class="th-sm">Condição</th> -->
-                    <th class="th-sm">Destino</th>
-                    <th class="th-sm">Usuario</th>
-                    <th class="th-sm">Data Hora</th>
+                        <th class="th-sm">Destino</th>
+                        <th class="th-sm">Usuario</th>
+                        <th class="th-sm">Data Hora</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -161,7 +162,7 @@ $datahoje = date("Y-m-d");
                        
 
                     ?>
-                        <tr>
+                    <tr>
                         <td> <?php echo $row['imei'] ?> </td>
                         <!-- <td> <?php echo $row['marca'] ?> </td>
                         <td> <?php echo $row['modelo'] ?> </td>
@@ -170,7 +171,7 @@ $datahoje = date("Y-m-d");
                         <td> <?php echo $row['destino'] ?> </td>
                         <td> <?php echo $row['usuario'] ?> </td>
                         <td> <?php echo date('d/m/Y H:i:s', strtotime($row['data_hora'])) ?> </td>
-                        </tr>
+                    </tr>
                     <?php }; ?>
 
                 </tbody>
@@ -182,7 +183,7 @@ $datahoje = date("Y-m-d");
     <br>
     </div>
     </div>
-<?php
+    <?php
 
         }
 ?>
