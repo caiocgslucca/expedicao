@@ -26,7 +26,7 @@ include('Header_CSS_JS.php');
                     </button>
                 </div>
                 <div class="modal-header text-center">
-                    <h4 class="modal-title w-100 font-weight-bold">Expedição</h4>
+                    <h4 class="modal-title w-100 font-weight-bold">Controle EAD Faturado</h4>
                 </div>
                 <?php
                 if (isset($_SESSION['nao_autenticado'])) :
