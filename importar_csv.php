@@ -85,6 +85,28 @@ if (isset($_POST["import"])) {
 </script>
 
 <body>
+
+<ul class="nav nav-tabs justify-content-center lighten-4 py-4">
+<?php
+$qsl_valida = "SELECT MAX(id) as id_valida FROM `db` where deleted_at IS NULL;";
+
+$recebidos = mysqli_query($conexao, $qsl_valida);
+
+while ($rows = mysqli_fetch_assoc($recebidos)) {
+    $id = $rows['id_valida'];
+};
+  
+    if( $id == "" ){
+    }else{
+        ?>
+        <li class="nav-item">
+                    <a class="nav-link active" href="limpar_base.php">Limpar Base</a>
+                </li>
+        <?php
+    }
+    ?> 
+    </ul>
+
     <form class="form-horizontal" action="importar_csv.php" method="post" name="frmCSVImport" id="frmCSVImport" enctype="multipart/form-data">
         <div class="flex-center flex-column">
             <!-- <h5>Acessar o link abaixo</h5> -->
