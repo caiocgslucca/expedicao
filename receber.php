@@ -17,43 +17,43 @@ date_default_timezone_set('America/recife');
 //date_default_timezone_set('America/Recife');
 
 $datahora = (date('Y-m-d H:i:s'));
-$datahorainicio = (date('y-m-d 00:00:00'));
-$datahorafinal = (date('y-m-d 23:59:59'));
+$datahorainicio = (date('Y-m-d 00:00:00'));
+$datahorafinal = (date('Y-m-d 23:59:59'));
 
 
 ?>
 
-<form method="POST" action="receber_imei.php" enctype="multipart/form-data">
-
+<form method="POST" action="receber_pacote.php" enctype="multipart/form-data">
+<title>Receber-Pacote</title>
 
     <ul class="nav nav-tabs justify-content-center lighten-4 py-4">
         <li class="nav-item">
+            <a class="nav-link active" href="receber.php">Receber Pacote</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link " href="recebido.php">Hitórico Recebido</a>
+        </li>
+         <!-- <li class="nav-item">
             <a class="nav-link " href="destino.php">Produtividade</a>
-        </li>
-        <li class="nav-item">
+        </li> -->
+        <!-- <li class="nav-item">
             <a class="nav-link " href="gerenciar.php">Gerenciar</a>
-        </li>
-        <li class="nav-item">
+        </li>  -->
+        <!-- <li class="nav-item">
             <a class="nav-link " href="historico.php">Historico</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link active" href="receber.php">Receber</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link " href="recebido.php">Hitorico Recebido</a>
-        </li>
+        </li> -->
 
     </ul>
     <br>
    
     <div class="flex-center flex-column">
         <div class="col-2">
-            <div class="form-group shadow-textarea">
-                <label for="exampleFormControlTextarea6"><b>Biper IMEI</b></label>
-                <textarea name="biper[]" value="" class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="3"></textarea>
+            <div class="form-group shadow-textarea text-center">
+                <!-- <label for="exampleFormControlTextarea6"><b>Pacote</b></label> -->
+                <input placeholder="Bipar Pacote" name="biper" value="" autofocus class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="3"></input>
             </div>
         </div>
-        <div class="col-2">
+        <div class="col-2 text-center">
             <div class="md-form mt-0">
                 <button type="submit" class="btn btn-success">Receber</button>
             </div>
@@ -61,32 +61,13 @@ $datahorafinal = (date('y-m-d 23:59:59'));
     </div>
 </form>
 
-<div class="flex-center flex-column">
+<div class="flex-center flex-column" style="display:block" >
     <div class="card card-body">
         <?php
 
         $ok = 0;
-        $recebidos2 = (" SELECT 
-        producao.*,
-                
-                case WHEN recebido.imei <> '' THEN 'Recebido' ELSE 'Faltando Receber' END 'Status',
-                case WHEN recebido.imei <> '' THEN recebido.data_hora ELSE producao.data_hora END 'Data Hora Atualizada',
-                case WHEN recebido.imei <> '' THEN recebido.usuario ELSE producao.usuario END 'Usuario Atualizado'
-
-                
-                FROM `pcp_producao` as producao
-                LEFT OUTER JOIN `pcp_recebido` as recebido  on recebido.imei = producao.imei
-                
-                WHERE producao.destino = '01_Ag.peça'
-                and producao.status = '1' 
-                and producao.data_hora >= '$datahorainicio'
-                ORDER by `Status` DESC
-                
-        
-        ");
-
+        $recebidos2 = ("SELECT * FROM `pcp_recebido` where usuario = '$usuario' and deleted_at IS NULL ");
         $recebidos3 = mysqli_query($conexao, $recebidos2);
-
         while ($row = mysqli_fetch_assoc($recebidos3)) {
             $ok++;
         }
@@ -96,11 +77,10 @@ $datahorafinal = (date('y-m-d 23:59:59'));
             <thead>
                 <tr>
 
-                    <th class="th-sm">IMEI</th>
-                    <th class="th-sm">Produto</th>
-                    <th class="th-sm">Condição</th>
-                    <th class="th-sm">Destino</th>
-                    <th class="th-sm">Status</th>
+                    <th class="th-sm">id</th>
+                    <th class="th-sm">Pacote</th>
+                    <th class="th-sm">Pedido</th>
+                    <th class="th-sm">Nota Fiscal</th>
                     <th class="th-sm">Usuario</th>
                     <th class="th-sm">Data Hora</th>
                 </tr>
@@ -108,29 +88,12 @@ $datahorafinal = (date('y-m-d 23:59:59'));
             <tbody>
 
                 <?php
-                $recebidos2 = ("SELECT 
-                producao.*,
-                
-                case WHEN recebido.imei <> '' THEN 'Recebido' ELSE 'Faltando Receber' END 'Status',
-                case WHEN recebido.imei <> '' THEN recebido.data_hora ELSE producao.data_hora END 'Data Hora Atualizada',
-                case WHEN recebido.imei <> '' THEN recebido.usuario ELSE producao.usuario END 'Usuario Atualizado'
-
-                
-                FROM `pcp_producao` as producao
-                LEFT OUTER JOIN `pcp_recebido` as recebido  on recebido.imei = producao.imei
-                
-                WHERE producao.destino = '01_Ag.peça'
-                and producao.status = '1'
-                and producao.data_hora >= '$datahorainicio'
-
-                 ORDER by `Status` DESC
-                
-                ");
+                $recebidos = ("SELECT * FROM `pcp_recebido` where usuario = '$usuario' and deleted_at IS NULL ORDER BY `pcp_recebido`.`id` DESC ");
 
                 // $recebidos2 =("SELECT * FROM `testefull` WHERE `usuario` = '$usuario' AND `data_hora` BETWEEN '$datahorainicio' AND '$datahorafinal' ORDER BY `data_hora` DESC");                   
-                $recebidos3 = mysqli_query($conexao, $recebidos2);
-
-                while ($row = mysqli_fetch_assoc($recebidos3)) {
+                $result = mysqli_query($conexao, $recebidos);
+                $index = 1;
+                while ($row = mysqli_fetch_assoc($result)) {
                    
                     if ($row['Status'] == 'Faltando Receber') {
                         $status = "<b style='color:red;'>Faltando Receber</b>";
@@ -141,17 +104,15 @@ $datahorafinal = (date('y-m-d 23:59:59'));
 
                 ?>
                     <tr>
-                        <td> <?php echo $row['imei'] ?> </td>
-                       
-                        <td> <?php echo $row['produto'] ?> </td>
-                        <td> <?php echo $row['condicao'] ?> </td>
-                        <td> <?php echo $row['destino'] ?> </td>
-                        <td> <?php echo $status ?> </td>
-                        <td> <?php echo $row['Usuario Atualizado'] ?> </td>
-                        <td> <?php echo date('d/m/Y H:i:s', strtotime($row['Data Hora Atualizada'])) ?> </td>
+                        <td> <?php echo $index ?> </td>
+                        <td> <?php echo $row['pacote'] ?> </td>
+                        <td> <?php echo $row['pedido'] ?> </td>
+                        <td> <?php echo $row['nota_fiscal'] ?> </td>
+                        <td> <?php echo $row['usuario'] ?> </td>
+                        <td> <?php echo date('d/m/Y H:i:s', strtotime($row['data_hora'])) ?> </td>
                     </tr>
 
-                <?php }; ?>
+                <?php $index ++; }; ?>
 
             </tbody>
         </table>

@@ -15,6 +15,10 @@ RUN cp /etc/apache2/mods-available/rewrite.load /etc/apache2/mods-enabled/
 
 RUN sed -e '/<Directory \/var\/www\/>/,/<\/Directory>/s/AllowOverride None/AllowOverride All/' -i /etc/apache2/apache2.conf
 
+RUN ["apt-get", "update"]
+RUN ["apt-get", "install", "-y", "zip"]
+RUN ["apt-get", "install", "-y", "unzip"]
+
 COPY ../ /app/
 
 EXPOSE 80

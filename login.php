@@ -28,7 +28,7 @@ exit();
 
 if($row == 1) {
 	$_SESSION['usuario'] = $usuario;
-	header('Location: destino.php');
+	header('Location: receber.php');
 	exit();
 } else {
 	$_SESSION['nao_autenticado'] = true;

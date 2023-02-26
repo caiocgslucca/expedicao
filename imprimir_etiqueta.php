@@ -57,16 +57,17 @@ include('conexao.php');
 <div class="op1">
     
       <?php
+      $pacote = $_SESSION['pacote'];
 
-    $imei = $_POST['imei'];
-    $usuario = $_POST['usuario'];
-
-$recebidos2 = ("SELECT * FROM `pcp_producao` WHERE imei = '$imei' and usuario = '$usuario' ORDER BY `pcp_producao`.`data_hora` DESC");
+$recebidos2 = ("SELECT * FROM `db` WHERE pacote = '$pacote' ");
 $recebidos3 = mysqli_query($conexao, $recebidos2);
 
 while ($row = mysqli_fetch_assoc($recebidos3)) {
-    
-  $biper = $row['imei'];
+
+  print_r($row);
+  // die();
+  
+  $pedido = $row['pedido']."";
   $datahora = $row['data_hora'];
   $usuario = $row['usuario'];
 
@@ -81,7 +82,7 @@ while ($row = mysqli_fetch_assoc($recebidos3)) {
       <svg id="barcode3"></svg>
 
       <script>
-        JsBarcode("#barcode3", "<?php echo $biper; ?>", {
+        JsBarcode("#barcode3", "<?php echo $pedido; ?>", {
           textAlign: "center",
           // textPosition: "top",
           font: "arial",
@@ -90,9 +91,7 @@ while ($row = mysqli_fetch_assoc($recebidos3)) {
           height: 30,
           width: 2,
           fontSize: 10,
-          text: "<?php echo $biper . " - " .$usuario . " - " . date('d/m/Y H:i:s', strtotime($datahora)) ; ?>",
-          
-
+          text: "<?php echo $pedido ; ?>",
         });
       </script>
 

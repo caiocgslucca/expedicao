@@ -5,11 +5,11 @@ include('Header_CSS_JS.php');
 
 ?>
  <title>Login</title>
- <link rel="shortcut icon"  href="./images-on-off/paytec.ico"><!--este comando muda o icone da janela-->
+ <link rel="shortcut icon"  href="./images-on-off/on.ico"><!--este comando muda o icone da janela-->
 
 <div class="row">
     <div class="col-sm"></div>
-    <div class="col-sm"> <img src="./images-on-off/paytec.png" width="900%" height="900%" class="img-fluid z-depth-1" alt="Responsive image"> </div>
+    <div class="col-sm"> <img src="./images-on-off/on.png" width="900%" height="900%" class="img-fluid z-depth-1" alt="Responsive image"> </div>
     <div class="col-sm"></div>
 </div>
 
@@ -19,7 +19,7 @@ include('Header_CSS_JS.php');
             <div class="modal-content">
                 <div class="modal-header text-center">
                     <h6 class="modal-title w-100 font-weight-bold">
-                        <a class="logo"><img src="./images-on-off/paytec_2.jpeg" height="120" width="380" /></a>
+                        <a class="logo"><img src="./images-on-off/on.png" height="120" width="380" /></a>
                     </h6>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>

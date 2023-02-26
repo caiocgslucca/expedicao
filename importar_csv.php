@@ -15,7 +15,7 @@ $id_status = '1';
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Query 95</title>
+    <title>Importar CSV</title>
 </head>
 
 <?php
@@ -29,37 +29,22 @@ if (isset($_POST["import"])) {
         $file = fopen($fileName, "r");
         $ok = 0;
         $erro = 0;
-        while (($column = fgetcsv($file, 10000, ",")) !== FALSE) {
+        while (($column = fgetcsv($file, 10000, ";")) !== FALSE) {
 
-            //             $sqlInsert = "INSERT INTO `dymo2`(
-            //                 `id`, `voucher`, `Marca`, `Modelo`, `produto_declarado`, 
-            //                 `Condicao_Declarada`, `imei_declarado`, `valorcompra`, 
-            //                 `id_status`, `usuario`, `data_hora`) VALUES
-
-            // (NULL, '$column[0]','$column[10]','$column[11]','$column[12]','$column[16]','$column[18]','$column[30]',
-            // '$id_status','$usuario','$datahora')";
-
-            $search  = array_map('trim',array("'", '"','R$', '/','\\'));
-
-            $array_salvar = str_replace($search, " ",  $column);
-
-            $rest = substr($array_salvar[2], -15);
-
-            $sqlInsert = "INSERT INTO `dymo2`(
-                    `id`, `voucher`, `position`, `Marca`, `Modelo`, `produto_declarado`, 
-                     `Condicao_Declarada`, `imei_declarado`, `valorcompra`, 
-                     `id_status`, `chave`, `usuario`, `data_hora`) VALUES
-                    (NULL, '$rest', '$array_salvar[5]', '$array_salvar[11]', '$array_salvar[10]', '$array_salvar[1]', '$array_salvar[6]', '$array_salvar[2]', '$array_salvar[8]',
-                    '$id_status', '', '$usuario', '$datahora')";
-
-
-            if ($array_salvar[0] == 'product_id' ||  $array_salvar[0] == '')
+            if ($column[0] == '﻿PEDIDO' ||  $column[2] == '')
                 continue;
-            $result = mysqli_query($conexao, $sqlInsert);
 
-            // echo "<br>";
-            // echo $sqlInsert;
-            // echo "<br>";
+                // print_r($column);
+                // echo "<br><br>";
+                // exit();
+
+            $sqlInsert = "INSERT INTO `db`(`id`, `pedido`, `nome_cliente`, `nota_fiscal`, `box`, `data_entrega`, 
+            `carga`, `situacao`, `qtd_itens`, `descricao`, `pacote`, `regiao`, `pacote_2`, `qtde`, `inv`, `usuario`, `data_hora`) VALUES
+            (NULL, '$column[0]', '$column[1]', '$column[2]', '$column[3]', '$column[4]', '$column[5]', '$column[6]', '$column[7]','$column[8]',
+            '$column[9]','$column[10]','$column[11]','$column[12]','$column[13]', '$usuario', '$datahora')";
+
+
+            $result = mysqli_query($conexao, $sqlInsert);
 
             if ($result == 1) {
                 //  echo "<br>";
@@ -74,17 +59,6 @@ if (isset($_POST["import"])) {
                 $type2 = "error";
                 $message2 = "Erro na importação: " . $erro;
 
-                // $update =  "UPDATE `dymo2` SET
-                // `imei_declarado`= '$column[2]',
-                // `position` = ''$column[5]'',
-                // `Marca`= '$column[11]',
-                // `Modelo`= '$column[10]',
-                // `produto_declarado`= '$column[1]',
-                // `Condicao_Declarada`= '$column[6]',
-                // `valorcompra` = '$column[8]',
-                // `data_hora` = '$datahora'
-                // WHERE  `voucher` = '$rest'";
-                // $updateresult = mysqli_query($conexao, $update);
 
                             }
         }
@@ -96,11 +70,12 @@ if (isset($_POST["import"])) {
         $("#frmCSVImport").on("submit", function() {
             $("#response").attr("class", "");
             $("#response").html("");
-            var fileType = ".txt";
+            var fileType = ".csv";
             var regex = new RegExp("([a-zA-Z0-9\s_\\.\-:])+(" + fileType + ")$");
             if (!regex.test($("#file").val().toLowerCase())) {
                 $("#response").addClass("error");
                 $("#response").addClass("display-block");
+                // $("#response").html("Arquivo invalido: <b>" + fileType + "</b> Ex. (1)");
                 $("#response").html("Arquivo invalido: <b>" + fileType + "</b> Ex. (1)");
                 return false;
             }
@@ -110,11 +85,10 @@ if (isset($_POST["import"])) {
 </script>
 
 <body>
-    <form class="form-horizontal" action="importar_csv_95.php" method="post" name="frmCSVImport" id="frmCSVImport" enctype="multipart/form-data">
+    <form class="form-horizontal" action="importar_csv.php" method="post" name="frmCSVImport" id="frmCSVImport" enctype="multipart/form-data">
         <div class="flex-center flex-column">
-            <h5>Acessar o link abaixo</h5>
-            <h5><?php echo "<a href='http://redash.trocafone.net/api/queries/95/results.csv?api_key=f674dc5894c63e138f7152a0e5ee3e3828ed9fdc' target='_blank' >Queries/95</a>"; ?></h5>
-            <h6>Baixar como CSV</h6>
+            <!-- <h5>Acessar o link abaixo</h5> -->
+            <h2>Importar como CSV</h2>
 
             <div id="response" class="<?php if (!empty($type1)) {
                                             echo $type1 . " display-block";
@@ -136,7 +110,7 @@ if (isset($_POST["import"])) {
                 <div class="row-sm5">
                     <div class="input-row">
                         <div class="custom-file">
-                            <input type="file" name="file" id="file" accept=".txt" class="custom-file-input" id="customFileLangHTML">
+                            <input type="file" name="file" id="file" accept=".csv" class="custom-file-input" id="customFileLangHTML">
                             <label class="custom-file-label" for="customFileLangHTML" data-browse="Bucar">Selecionar Arquivo</label>
                         </div>
                     </div>

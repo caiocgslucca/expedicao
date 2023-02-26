@@ -142,7 +142,7 @@ if (@empty($_POST['login'])) {
                     $mail = new PHPMailer();
                     $assunto .= utf8_decode("<strong>Olá</strong> $usuario <br /><br />");
                     $assunto .= "<strong> Login criado para:</strong> $login <br />";
-                    $assunto .= utf8_decode("<strong> Senha:</strong> paytec@123 <br />");
+                    $assunto .= utf8_decode("<strong> Senha:</strong> troca@123 <br />");
                     $assunto .= utf8_decode("<strong> Setor:</strong> $setor <br />");
 
                     $mail->IsHTML(true);
