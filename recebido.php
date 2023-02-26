@@ -52,6 +52,9 @@ $datahoje = date("Y-m-d");
                     <li class="nav-item">
                         <a class="nav-link" href="finalizar.php">Finalizar Processo</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pedido.php">Excluir Pedido</a>
+                    </li>
                 </ul>
 
                     <div class="container" style="text-align-last: center">
