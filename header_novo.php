@@ -20,7 +20,7 @@ $datahora = (date('H:i:s d-m-Y'));
 </head>
 <body>
     <div class="header">
-        <a class="logo"><img src="./images-on-off/on.png" height="30" width="100"> <br>
+        <a class="logo"><img src="./images-on-off/logo_viavareja.jpeg" height="40" width="90"> <br>
             <br>
             Usuário: <?php echo $_SESSION['usuario']; ?> </a>
             

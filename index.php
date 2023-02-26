@@ -9,7 +9,7 @@ include('Header_CSS_JS.php');
 
 <div class="row">
     <div class="col-sm"></div>
-    <div class="col-sm"> <img src="./images-on-off/on.png" width="900%" height="900%" class="img-fluid z-depth-1" alt="Responsive image"> </div>
+    <div class="col-sm"> <img src="./images-on-off/logo_viavareja.jpeg" width="900%" height="900%" class="img-fluid z-depth-1" alt="Responsive image"> </div>
     <div class="col-sm"></div>
 </div>
 
@@ -19,7 +19,7 @@ include('Header_CSS_JS.php');
             <div class="modal-content">
                 <div class="modal-header text-center">
                     <h6 class="modal-title w-100 font-weight-bold">
-                        <a class="logo"><img src="./images-on-off/on.png" height="120" width="380" /></a>
+                        <a class="logo"><img src="./images-on-off/logo_viavareja.jpeg" height="130" width="190" /></a>
                     </h6>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
