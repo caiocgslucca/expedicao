@@ -7,8 +7,12 @@ $datahora = (date('Y-m-d H:i:s'));
 $usuario = $_SESSION['usuario'];
 $status = 1;
 
-$sql_delet = "DELETE from db where deleted_at is null";
-                    $recebidos = mysqli_query($conexao, $sql_delet);
+$sql_delet_db = "DELETE from db where finalizado is null";
+                    $recebidos = mysqli_query($conexao, $sql_delet_db);
+
+$sql_delet_pcp_recebido = "DELETE from pcp_recebido where finalizado is null;";
+$recebidos = mysqli_query($conexao, $updasql_delet_pcp_recebidoe);
+
                     ?>  
                     <div class="alert alert-danger" role="alert" style="text-align: center;"> <h2><b>Base Apagada</b></h2></div> 
                     <?php

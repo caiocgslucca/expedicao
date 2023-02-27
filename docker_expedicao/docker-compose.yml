@@ -34,7 +34,7 @@ services:
     environment:
       MYSQL_DATABASE: u103814480_controle360gra
       MYSQL_USER: root
-      MYSQL_ROOT_PASSWORD: "root"
+      MYSQL_ROOT_PASSWORD: "#tr0caf0ne#"
       SERVICE_TAGS: dev
       SERVICE_NAME: mysql
     volumes:
