@@ -11,7 +11,7 @@ $sql_delet_db = "DELETE from db where finalizado is null";
 $conexao_db = mysqli_query($conexao, $sql_delet_db);
 
 $sql_delet_pcp_recebido = "DELETE from pcp_recebido where finalizado is null;";
-$conexaop_cp_recebido = mysqli_query($conexao, $updasql_delet_pcp_recebidoe);
+$conexaop_cp_recebido = mysqli_query($conexao, $sql_delet_pcp_recebido);
 
                     ?>  
                     <div class="alert alert-danger" role="alert" style="text-align: center;"> <h2><b>Base Apagada</b></h2></div> 
