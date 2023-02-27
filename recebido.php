@@ -102,6 +102,7 @@ $datahoje = date("Y-m-d");
                             <th class="th-sm">Pacote</th>
                             <th class="th-sm">Pedido</th>
                             <th class="th-sm">Cliente</th>
+                            <th class="th-sm">SKU</th>
                             <th class="th-sm">Produto</th>
                             <th class="th-sm">Nota Fiscal</th>
                             <th class="th-sm">Status</th>
@@ -145,6 +146,7 @@ $datahoje = date("Y-m-d");
                                     <td> <?php echo $row['pacote'] ?> </td>
                                     <td> <?php echo $row['pedido'] ?> </td>
                                     <td> <?php echo $row['nome_cliente'] ?> </td>
+                                    <td> <?php echo $row['sku'] ?> </td>
                                     <td> <?php echo $row['descricao'] ?> </td>
                                     <td> <?php echo $row['nota_fiscal'] ?> </td>
                                     <td> <?php echo $status ?> </td>
@@ -233,6 +235,7 @@ $datahoje = date("Y-m-d");
                             <th class="th-sm">Pacote</th>
                             <th class="th-sm">Pedido</th>
                             <th class="th-sm">Cliente</th>
+                            <th class="th-sm">SKU</th>
                             <th class="th-sm">Produto</th>
                             <th class="th-sm">Nota Fiscal</th>
                             <th class="th-sm">Status</th>
@@ -273,6 +276,7 @@ $datahoje = date("Y-m-d");
                                     <td> <?php echo $row['pacote'] ?> </td>
                                     <td> <?php echo $row['pedido'] ?> </td>
                                     <td> <?php echo $row['nome_cliente'] ?> </td>
+                                    <td> <?php echo $row['sku'] ?> </td>
                                     <td> <?php echo $row['descricao'] ?> </td>
                                     <td> <?php echo $row['nota_fiscal'] ?> </td>
                                     <td> <?php echo $status ?> </td>

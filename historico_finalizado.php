@@ -47,7 +47,7 @@ $datahoje = date("Y-m-d");
                         <a class="nav-link" href="receber.php">Receber Pacote</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="recebido.php">Hitórico Recebido</a>
+                        <a class="nav-link " href="recebido.php">Hitórico Recebido</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="finalizar.php">Finalizar Processo</a>
@@ -56,7 +56,7 @@ $datahoje = date("Y-m-d");
                         <a class="nav-link" href="pedido.php">Excluir Pedido</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="historico_finalizado.php">Histórico Finalizado</a>
+                        <a class="nav-link active" href="historico_finalizado.php">Histórico Finalizado</a>
                     </li>
                 </ul>
 
@@ -102,12 +102,13 @@ $datahoje = date("Y-m-d");
                             <th class="th-sm">Pacote</th>
                             <th class="th-sm">Pedido</th>
                             <th class="th-sm">Cliente</th>
+                            <th class="th-sm">SKU</th>
                             <th class="th-sm">Produto</th>
                             <th class="th-sm">Nota Fiscal</th>
                             <th class="th-sm">Status</th>
                             <th class="th-sm">Usuario</th>
                             <th class="th-sm">Data Hora</th>
-                            <th class="th-sm text-center">Ação</th>
+                           
                             </tr>
                         </thead>
                         <tbody>
@@ -145,63 +146,12 @@ $datahoje = date("Y-m-d");
                                     <td> <?php echo $row['pacote'] ?> </td>
                                     <td> <?php echo $row['pedido'] ?> </td>
                                     <td> <?php echo $row['nome_cliente'] ?> </td>
+                                    <td> <?php echo $row['sku'] ?> </td>
                                     <td> <?php echo $row['descricao'] ?> </td>
                                     <td> <?php echo $row['nota_fiscal'] ?> </td>
                                     <td> <?php echo $status ?> </td>
                                     <td> <?php echo $row['Usuario Atualizado'] ?> </td>
                                     <td> <?php echo date('d/m/Y H:i:s', strtotime($row['Data Hora Atualizada'])) ?> </td>
-                                    <td class="text-center">
-                                        <?php if( $row['id_pacote'] == "" ){
-                                            }else{
-                                                ?>
-                                                <div style="display:flex; justify-content:center">
-
-                                                    <form action="etiqueta.php" method="POST" enctype="multipart/form-data">
-                                                        <button style='font-size:24px; border:none;'><i class='fas fa-print' aria-hidden="true"></i></button>
-                                                        <!-- <i class='fas fa-print' style='font-size:24px;color:black' aria-hidden="true"></i> -->
-                                                        <input name="pacote" type="hidden" value="<?php echo $row['pacote'] ?>" >
-                                                        
-                                                    </form>
-                                                    <button style='font-size:24px;color:red; border:none;'>
-                                                        <i id="excluir_item<?php echo $row['id'] ?>" data-toggle="modal" data-target="#deletar<?php echo $row['id'] ?>" class='fas fa-trash-alt'  aria-hidden="true"></i>
-                                                    </button>
-                                                </div>
-
-                                                <form action="deletar_item.php" method="POST">
-                                                                        <div class="modal fade" id="deletar<?php echo $row['id'] ?>" tabindex="-1" role="dialog"
-                                                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                                            <div class="modal-dialog" role="document">
-                                                                                <div class="modal-content">
-                                                                                    <div class="modal-header ">
-                                                                                        <h5 class="modal-title" id="exampleModalLabel">Excluir Pacote</h5>
-                                                                                        <button type="button" class="close" data-dismiss="modal"
-                                                                                            aria-label="Close">
-                                                                                            <span aria-hidden="true">&times;</span>
-                                                                                        </button>
-                                                                                    </div>
-                                                                                    <div class="modal-body">
-                                                                                        Você tem certeza que deseja excluir o Pacote: <b>
-                                                                                            <?php echo $row['pacote'] ?> </b> ?
-                                                                                    </div>
-                                                                                    <div class="modal-body">
-                                                                                            Referente ao Pedido: <b>
-                                                                                            <?php echo $row['pedido'] ?> </b> ?
-                                                                                    </div>
-
-                                                                                    <input name="id_pacote" type="hidden" id="inputName"
-                                                                                        value="<?php echo $row['id_pacote'] ?>" class="form-control validate">
-
-                                                                                    <div class="modal-footer justify-content-center">
-                                                                                        <button type="submit" class="btn btn-primary">Sim</button>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                    </form>
-                                                <?php
-                                            }
-                                            ?>
-                                    </td>
                                                         
                                 </tr>
 
@@ -238,7 +188,6 @@ $datahoje = date("Y-m-d");
                             <th class="th-sm">Status</th>
                             <th class="th-sm">Usuario</th>
                             <th class="th-sm">Data Hora</th>
-                            <th class="th-sm text-center">Ação</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -278,7 +227,7 @@ $datahoje = date("Y-m-d");
                                     <td> <?php echo $status ?> </td>
                                     <td> <?php echo $row['Usuario Atualizado'] ?> </td>
                                     <td> <?php echo date('d/m/Y H:i:s', strtotime($row['Data Hora Atualizada'])) ?> </td>
-                                    <td class="text-center">
+                                    
                                         <?php if( $row['id_pacote'] == "" ){
                                             }else{
                                                 ?>
