@@ -162,8 +162,9 @@ while ($rows = mysqli_fetch_assoc($recebidos)) {
                                  echo '<meta http-equiv="refresh" content="3;URL=receber.php" />';
                                  die();
                         }else{
-                            $insert_sql = "INSERT INTO `pcp_recebido`(`id`, `pacote`, `pedido`, `nota_fiscal`, `usuario`, `data_hora`) VALUES 
-                                                (NULL, '$pacote', '$pedido', '$nota_fiscal', '$usuario', '$datahora')";
+                            $obs = $_POST['observacao'];
+                            $insert_sql = "INSERT INTO `pcp_recebido`(`id`, `pacote`, `pedido`, `nota_fiscal`, `usuario`, `data_hora`, `deleted_at`, `finalizado`, `obs`) VALUES 
+                                                (NULL, '$pacote', '$pedido', '$nota_fiscal', '$usuario', '$datahora',null,null,'$obs')";
                                             $salvar = mysqli_query($conexao, $insert_sql);
 
                                             echo '<meta http-equiv="refresh" content="0;URL=etiqueta.php" />';

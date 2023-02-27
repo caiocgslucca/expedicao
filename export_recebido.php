@@ -41,6 +41,7 @@ if (empty($_GET['dateini'])) {
                             <th class="th-sm">SKU</th>
                             <th class="th-sm">Produto</th>
                             <th class="th-sm">Nota Fiscal</th>
+                            <th class="th-sm">Observação</th>
                             <th class="th-sm">Status</th>
                             <th class="th-sm">Usuario</th>
                             <th class="th-sm">Data Hora</th>
@@ -56,6 +57,7 @@ if (empty($_GET['dateini'])) {
             // $result_usuarios = ("SELECT * FROM `pcp_recebido` WHERE  `data_hora` BETWEEN '$data 00:00:00' AND '$data 23:59:59' ORDER BY `pcp_recebido`.`data_hora` DESC");
             $result_usuarios = ("SELECT 
             producao.*,
+            recebido.obs,
             case WHEN recebido.pacote <> '' THEN 'Recebido' ELSE 'Faltando Receber' END 'Status',
             case WHEN recebido.pacote <> '' THEN recebido.data_hora ELSE producao.data_hora END 'Data Hora Atualizada',
             case WHEN recebido.pacote <> '' THEN recebido.usuario ELSE producao.usuario END 'Usuario Atualizado'
@@ -82,6 +84,7 @@ if (empty($_GET['dateini'])) {
                                     <td> <?php echo $row['sku'] ?> </td>
                                     <td> <?php echo $row['descricao'] ?> </td>
                                     <td> <?php echo $row['nota_fiscal'] ?> </td>
+                                    <td> <?php echo $row['obs'] ?> </td>
                                     <td> <?php echo $status ?> </td>
                                     <td> <?php echo $row['Usuario Atualizado'] ?> </td>
                                     <td> <?php echo date('d/m/Y H:i:s', strtotime($row['Data Hora Atualizada'])) ?> </td>
@@ -113,6 +116,7 @@ if (empty($_GET['dateini'])) {
                             <th class="th-sm">SKU</th>
                             <th class="th-sm">Produto</th>
                             <th class="th-sm">Nota Fiscal</th>
+                            <th class="th-sm">Observação</th>
                             <th class="th-sm">Status</th>
                             <th class="th-sm">Usuario</th>
                             <th class="th-sm">Data Hora</th>
@@ -127,6 +131,7 @@ if (empty($_GET['dateini'])) {
                         // $result_usuarios = ("SELECT * FROM `pcp_recebido` WHERE  `data_hora` BETWEEN '$Datainicio 00:00:00' AND '$Datafinal 23:59:59' ORDER BY `pcp_recebido`.`data_hora` DESC");
                         $result_usuarios = ("SELECT 
                         producao.*,
+                        recebido.obs,
                         case WHEN recebido.pacote <> '' THEN 'Recebido' ELSE 'Faltando Receber' END 'Status',
                         case WHEN recebido.pacote <> '' THEN recebido.data_hora ELSE producao.data_hora END 'Data Hora Atualizada',
                         case WHEN recebido.pacote <> '' THEN recebido.usuario ELSE producao.usuario END 'Usuario Atualizado'
@@ -155,6 +160,7 @@ if (empty($_GET['dateini'])) {
                                     <td> <?php echo $row['sku'] ?> </td>
                                     <td> <?php echo $row['descricao'] ?> </td>
                                     <td> <?php echo $row['nota_fiscal'] ?> </td>
+                                    <td> <?php echo $row['obs'] ?> </td>
                                     <td> <?php echo $status ?> </td>
                                     <td> <?php echo $row['Usuario Atualizado'] ?> </td>
                                     <td> <?php echo date('d/m/Y H:i:s', strtotime($row['Data Hora Atualizada'])) ?> </td>
