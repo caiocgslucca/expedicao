@@ -100,7 +100,7 @@ while ($rows = mysqli_fetch_assoc($recebidos)) {
     }else{
         ?>
         <li class="nav-item">
-                    <a class="nav-link active" href="limpar_base.php">Limpar Base</a>
+                    <a class="nav-link active" href="limpar_base.php">Limpar base que foi importada errada.</a>
                 </li>
         <?php
     }
