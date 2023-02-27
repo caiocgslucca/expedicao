@@ -91,9 +91,9 @@ Altura (milímetros)	110 -->
   <div class="container">
     <div class="row justify-content-start">
       <div class="col-7">
-        <h5 style="font-weight: 900;">
+        <h2 style="font-weight: 900;">
           <?php echo $nome_cliente ?>
-        </h5>
+        </h2>
       </div>
       <div class="col-4">
         <svg id="pedido"></svg>
@@ -116,9 +116,9 @@ Altura (milímetros)	110 -->
         <h4 style="font-weight: 900;">PV:</h4>
       </div>
       <div class="col-5" style="place-self: end;">
-        <h4 style="font-weight: 900;">
+        <h2 style="font-weight: 900;">
           <?php echo $pedido ?>
-        </h4>
+        </h2>
       </div>
       <div class="col-2" style="place-self: end;">
         <h6 style="font-size: 50px; font-weight: 900;">BOX:</h6>
@@ -134,9 +134,9 @@ Altura (milímetros)	110 -->
         <h5 style="font-weight: 900;">NF:</h5>
       </div>
       <div class="col-2" style="place-self: center;">
-        <h5 style="font-weight: 900;" >
+        <h3 style="font-weight: 900;" >
           <?php echo $nota_fiscal ?>
-        </h5>
+        </h3>
       </div>
       <div class="col-4" style="place-self: center;">
         <svg id="nota_fiscal"></svg>
@@ -159,9 +159,9 @@ Altura (milímetros)	110 -->
         <h5 style="font-weight: 900;" >PRODUTO:</h5>
       </div>
       <div class="col-7" style="place-self: center;">
-        <h5 style="font-weight: 900;">
+        <h2 style="font-weight: 900;">
           <?php echo $descricao ?>
-        </h5>
+        </h2>
       </div>
     </div>
     <div class="row justify-content-start">
@@ -224,17 +224,14 @@ Altura (milímetros)	110 -->
     </div>
     <div class="row justify-content-evenly" style="background-color: currentcolor;color: black;">
       <div class="col-4">
-        <h1 style="color: white;">
+        <h1 style="color: white; font-weight: 900;">
           <?php echo $data_entrega ?>
         </h1>
       </div>
     </div>
     <div class="row justify-content-end" style="background-color: currentcolor;color: black;">
-      <div class="col-6">
-        <h6 style="color: white;">
-          Data hora impressão -
-          <?php echo $datahorahora ?>
-        </h6>
+      <div class="col-7">
+        <h6 style="color: white; font-weight: 900;">Data hora impressão - <?php echo $datahorahora ?></h6>
       </div>
     </div>
 
