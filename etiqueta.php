@@ -91,7 +91,7 @@ Altura (milímetros)	110 -->
   <div class="container">
     <div class="row justify-content-start">
       <div class="col-7">
-        <h5>
+        <h5 style="font-weight: 900;">
           <?php echo $nome_cliente ?>
         </h5>
       </div>
@@ -113,37 +113,30 @@ Altura (milímetros)	110 -->
     </div>
     <div class="row justify-content-start">
       <div class="col-2" style="place-self: end;">
-        <h6>PV:</h6>
+        <h4 style="font-weight: 900;">PV:</h4>
       </div>
       <div class="col-5" style="place-self: end;">
-        <h6>
+        <h4 style="font-weight: 900;">
           <?php echo $pedido ?>
-        </h6>
+        </h4>
       </div>
       <div class="col-2" style="place-self: end;">
-        <h6>BOX:</h6>
+        <h6 style="font-size: 50px; font-weight: 900;">BOX:</h6>
       </div>
       <div class="col-2">
-        <h1> <b>
+        <h1> <b style="font-size: 100px;" >
             <?php echo $box ?>
           </b> </h1>
       </div>
     </div>
-    <!-- <div class="row justify-content-end" style="-webkit-writing-mode: vertical-rl;">
-      <div class="col-4">
-        <h1>
-          <?php echo $nota_fiscal ?>
-        </h1>
-      </div>
-    </div> -->
     <div class="row justify-content-end">
       <div class="col-1" style="place-self: center;">
-        <h6>NF:</h6>
+        <h5 style="font-weight: 900;">NF:</h5>
       </div>
       <div class="col-2" style="place-self: center;">
-        <h6>
+        <h5 style="font-weight: 900;" >
           <?php echo $nota_fiscal ?>
-        </h6>
+        </h5>
       </div>
       <div class="col-4" style="place-self: center;">
         <svg id="nota_fiscal"></svg>
@@ -163,30 +156,28 @@ Altura (milímetros)	110 -->
     </div>
     <div class="row justify-content-start">
       <div class="col-2" style="place-self: end;">
-        <h6>PRODUTO:</h6>
+        <h5 style="font-weight: 900;" >PRODUTO:</h5>
       </div>
       <div class="col-7" style="place-self: center;">
-        <h5>
+        <h5 style="font-weight: 900;">
           <?php echo $descricao ?>
         </h5>
       </div>
     </div>
     <div class="row justify-content-start">
       <div class="col-2">
-        QTD ITNES:
+       <h6 style="font-weight: 900;">QTD ITNES:</h6> 
       </div>
-      <div class="col-4">
-        <?php echo $qtde . "/" . $qtd_itens ?>
+      <div class="col-2">
+        <h5 style="font-weight: 900;"><?php echo $qtde . "/" . $qtd_itens ?></h5>
       </div>
     </div>
     <div class="row justify-content-start">
       <div class="col-2">
-        PACOTE:
+        <h5 style="font-weight: 900;" >PACOTE:</h5>
       </div>
       <div class="col-4">
-        <b>
-          <?php echo $pacote ?>
-        </b>
+        <h5 style="font-weight: 900;" ><b><?php echo $pacote ?></b></h5>
       </div>
     </div>
     <div class="row justify-content-evenly">
@@ -208,27 +199,27 @@ Altura (milímetros)	110 -->
     </div>
     <div class="row justify-content-start">
       <div class="col-2" style="place-self: end;">
-        <h6>CARGA:</h6>
+        <h5 style="font-weight: 900;">CARGA:</h5>
       </div>
       <div class="col-4" style="place-self: end;">
-        <h6>
+        <h5 style="font-weight: 900;">
           <?php echo $carga ?>
-        </h6>
+        </h5>
       </div>
       <div class="col-4">
-        <h4>
+        <h3 style="font-weight: 900;">
           <?php echo $situacao ?>
-        </h4>
+        </h3>
       </div>
     </div>
     <div class="row justify-content-start">
       <div class="col-2" style="place-self: center;">
-        <h6>REGIÃO:</h6>
+        <h5 style="font-weight: 900;" >REGIÃO:</h5>
       </div>
       <div class="col-4" style="place-self: center;">
-        <h6>
+        <h5 style="font-weight: 900;">
           <?php echo $regiao ?>
-        </h6>
+        </h5>
       </div>
     </div>
     <div class="row justify-content-evenly" style="background-color: currentcolor;color: black;">

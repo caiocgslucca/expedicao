@@ -15,14 +15,14 @@ $datahora = (date('Y-m-d H:i:s'));
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header text-center">
-                <h4 class="modal-title w-100 font-weight-bold">Erro</h4>
+                <h4 class="modal-title w-100 font-weight-bold">Finalizar</h4>
                 <button  id="close" type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body mx-3">
                 <div class="md-form mb-5">
-                    <div class="alert alert-danger text-center " role="alert">
+                    <div class="alert alert-info text-center " role="alert">
                         <h1> <b> Tem ceteza que deseja finalizar? </b> </h1>
                     </div>
                 </div>
