@@ -55,10 +55,10 @@ while ($row = mysqli_fetch_assoc($recebidos3)) {
 exit();       
     } else {
 
-        $sql_finalizar_recebido = ("UPDATE `pcp_recebido` SET `deleted_at` = '$datahora' where deleted_at is null ");
+        $sql_finalizar_recebido = ("UPDATE `pcp_recebido` SET `finalizado` = '$datahora' where finalizado is null ");
         $finalizar_recebido = mysqli_query($conexao, $sql_finalizar_recebido);
         
-        $sql_finalizar_db = ("UPDATE `db` SET `deleted_at` = '$datahora' where deleted_at is null ");
+        $sql_finalizar_db = ("UPDATE `db` SET `finalizado` = '$datahora' where finalizado is null ");
         $finalizar_recebidos = mysqli_query($conexao, $sql_finalizar_db);
         
         ?>

@@ -66,7 +66,7 @@ $datahorafinal = (date('Y-m-d 23:59:59'));
         <?php
 
         $ok = 0;
-        $recebidos2 = ("SELECT * FROM `pcp_recebido` where usuario = '$usuario' and deleted_at IS NULL ");
+        $recebidos2 = ("SELECT * FROM `pcp_recebido` where usuario = '$usuario' and deleted_at IS NULL and finalizado IS NULL");
         $recebidos3 = mysqli_query($conexao, $recebidos2);
         while ($row = mysqli_fetch_assoc($recebidos3)) {
             $ok++;
@@ -88,7 +88,7 @@ $datahorafinal = (date('Y-m-d 23:59:59'));
             <tbody>
 
                 <?php
-                $recebidos = ("SELECT * FROM `pcp_recebido` where usuario = '$usuario' and deleted_at IS NULL ORDER BY `pcp_recebido`.`id` DESC ");
+                $recebidos = ("SELECT * FROM `pcp_recebido` where usuario = '$usuario' and deleted_at IS NULL and finalizado IS NULL ORDER BY `pcp_recebido`.`id` DESC ");
 
                 // $recebidos2 =("SELECT * FROM `testefull` WHERE `usuario` = '$usuario' AND `data_hora` BETWEEN '$datahorainicio' AND '$datahorafinal' ORDER BY `data_hora` DESC");                   
                 $result = mysqli_query($conexao, $recebidos);
