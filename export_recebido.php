@@ -59,8 +59,8 @@ if (empty($_GET['dateini'])) {
             case WHEN recebido.pacote <> '' THEN recebido.data_hora ELSE producao.data_hora END 'Data Hora Atualizada',
             case WHEN recebido.pacote <> '' THEN recebido.usuario ELSE producao.usuario END 'Usuario Atualizado'
             FROM `db` as producao
-            LEFT OUTER JOIN `pcp_recebido` as recebido  on recebido.pacote = producao.pacote and recebido.deleted_at IS NULL
-            WHERE producao.`data_hora` BETWEEN '$data 00:00:00' AND '$data 23:59:59' and producao.deleted_at IS NULL
+            LEFT OUTER JOIN `pcp_recebido` as recebido  on recebido.pacote = producao.pacote and recebido.finalizado IS NULL
+            WHERE producao.`data_hora` BETWEEN '$data 00:00:00' AND '$data 23:59:59' and producao.finalizado IS NULL
              ORDER by `id` ASC");
             
             $resultado_usuarios = mysqli_query($conexao, $result_usuarios);
@@ -128,8 +128,8 @@ if (empty($_GET['dateini'])) {
                         case WHEN recebido.pacote <> '' THEN recebido.data_hora ELSE producao.data_hora END 'Data Hora Atualizada',
                         case WHEN recebido.pacote <> '' THEN recebido.usuario ELSE producao.usuario END 'Usuario Atualizado'
                         FROM `db` as producao
-                        LEFT OUTER JOIN `pcp_recebido` as recebido  on recebido.pacote = producao.pacote and recebido.deleted_at IS NULL
-                        WHERE producao.`data_hora` BETWEEN '$Datainicio 00:00:00' AND '$Datafinal 23:59:59' and producao.deleted_at IS NULL
+                        LEFT OUTER JOIN `pcp_recebido` as recebido  on recebido.pacote = producao.pacote and recebido.finalizado IS NULL
+                        WHERE producao.`data_hora` BETWEEN '$Datainicio 00:00:00' AND '$Datafinal 23:59:59' and producao.finalizado IS NULL
                          ORDER by `id` ASC");
                         
                         $resultado_usuarios = mysqli_query($conexao, $result_usuarios);
