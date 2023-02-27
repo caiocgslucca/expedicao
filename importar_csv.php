@@ -31,7 +31,7 @@ if (isset($_POST["import"])) {
         $erro = 0;
         while (($column = fgetcsv($file, 10000, ";")) !== FALSE) {
 
-            if ($column[0] == '﻿PEDIDO' ||  $column[2] == '')
+            if ($column[0] == '﻿PEDIDO' ||  $column[2] == '' || $column[0] == 'PEDIDO' )
                 continue;
 
                 // print_r($column);
