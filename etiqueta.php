@@ -34,6 +34,7 @@ while ($row = mysqli_fetch_assoc($recebidos3)) {
   $carga = $row['carga'];
   $situacao = $row['situacao'];
   $qtd_itens = $row['qtd_itens'];
+  $sku = $row['sku'];
   $descricao = $row['descricao'];
   $pacote = $row['pacote'];
   $regiao = $row['regiao'];
@@ -152,6 +153,16 @@ Altura (milímetros)	110 -->
             fontSize: 10,
           });
         </script>
+      </div>
+    </div>
+    <div class="row justify-content-start">
+      <div class="col-2" style="place-self: end;">
+        <h5 style="font-weight: 900;" >SKU:</h5>
+      </div>
+      <div class="col-7" style="place-self: center;">
+        <h2 style="font-weight: 900;">
+          <?php echo $sku ?>
+        </h2>
       </div>
     </div>
     <div class="row justify-content-start">

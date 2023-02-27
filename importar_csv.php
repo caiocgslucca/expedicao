@@ -39,18 +39,17 @@ if (isset($_POST["import"])) {
                 // exit();
 
             $sqlInsert = "INSERT INTO `db`(`id`, `pedido`, `nome_cliente`, `nota_fiscal`, `box`, `data_entrega`, 
-            `carga`, `situacao`, `qtd_itens`, `descricao`, `pacote`, `regiao`, `pacote_2`, `qtde`, `inv`, `usuario`, `data_hora`) VALUES
-            (NULL, '$column[0]', '$column[1]', '$column[2]', '$column[3]', '$column[4]', '$column[5]', '$column[6]', '$column[7]','$column[8]',
-            '$column[9]','$column[10]','$column[11]','$column[12]','$column[13]', '$usuario', '$datahora')";
+            `carga`, `situacao`, `qtd_itens`, `sku`, `descricao`, `pacote`, `regiao`, `pacote_2`, `qtde`, `inv`, `usuario`, `data_hora`) VALUES
+            (NULL, '$column[0]', '$column[1]', '$column[2]', '$column[3]', '$column[4]', '$column[5]', '$column[6]', '$column[7]', '$column[8]', '$column[9]',
+            '$column[10]', '$column[11]', '$column[12]', '$column[13]', '$column[14]', '$usuario', '$datahora')";
 
 
             $result = mysqli_query($conexao, $sqlInsert);
+            // echo "<br>";
+            // echo $sqlInsert;
+            // echo "<br>";
 
             if ($result == 1) {
-                //  echo "<br>";
-                //  echo $sqlInsert;
-                //  echo "<br>";
-
                 $ok = $ok + 1;
                 $type1 = "success";
                 $message1 = "Importado com sucesso: " . $ok;
@@ -58,9 +57,7 @@ if (isset($_POST["import"])) {
                 $erro = $erro + 1;
                 $type2 = "error";
                 $message2 = "Erro na importação: " . $erro;
-
-
-                            }
+            }
         }
     }
 }
@@ -88,7 +85,7 @@ if (isset($_POST["import"])) {
 
 <ul class="nav nav-tabs justify-content-center lighten-4 py-4">
 <?php
-$qsl_valida = "SELECT MAX(id) as id_valida FROM `db` where deleted_at IS NULL;";
+$qsl_valida = "SELECT MAX(id) as id_valida FROM `db` where finalizado IS NULL;";
 
 $recebidos = mysqli_query($conexao, $qsl_valida);
 
