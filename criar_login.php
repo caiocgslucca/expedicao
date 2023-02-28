@@ -60,7 +60,7 @@ $nivel_necessario = 1;
           <label data-error="wrong" data-success="right" for="form29">E-mail para Recuperação de senha</label>
         </div>
 
-        <input type="hidden" name="senha" value="paytec@123" id="form29" class="form-control validate">
+        <input type="hidden" name="senha" value="troca@123" id="form29" class="form-control validate">
 
         <div class="md-form mb-5">
           <i class="fas fa-tag prefix grey-text"></i>
