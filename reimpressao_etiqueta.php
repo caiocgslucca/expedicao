@@ -10,13 +10,13 @@ $pacote = $_POST['pacote'];
 
 $datahorahora = (date('d/m/Y H:i:s'));
 
-$recebidos2 = ("SELECT * FROM `db` WHERE pacote = '$pacote' ");
+$recebidos2 = ("SELECT * FROM `db` WHERE pacote = '$pacote' and deleted_at IS NULL and finalizado IS NULL ");
 $recebidos3 = mysqli_query($conexao, $recebidos2);
 
 while ($row = mysqli_fetch_assoc($recebidos3)) {
 
-  // print_r($row);
-  // die();
+//   print_r($row);
+//   die();
   $datahora = $row['data_hora'];
   $usuario = $row['usuario'];
 
@@ -34,7 +34,7 @@ while ($row = mysqli_fetch_assoc($recebidos3)) {
   $regiao = $row['regiao'];
   $qtde = $row['qtde'];
 
-}
+
 ;
 // require __DIR__ . '/vendor/autoload.php';
 // use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
@@ -248,4 +248,6 @@ Altura (milímetros)	110 -->
  <script>
        window.print();
 </script>
-<?php echo '<meta http-equiv="refresh" content="0;URL=recebido.php" />'; ?>
+<?php echo '<meta http-equiv="refresh" content="0;URL=recebido.php" />';
+}
+?>
