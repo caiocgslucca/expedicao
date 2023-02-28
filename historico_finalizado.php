@@ -125,8 +125,8 @@ $datahoje = date("Y-m-d");
                             case WHEN recebido.pacote <> ''  THEN recebido.data_hora ELSE producao.data_hora END 'Data Hora Atualizada',
                             case WHEN recebido.pacote <> ''  THEN recebido.usuario ELSE producao.usuario END 'Usuario Atualizado'
                             FROM `db` as producao
-                            LEFT OUTER JOIN `pcp_recebido` as recebido on recebido.pacote = producao.pacote and recebido.finalizado IS NOT NULL
-                            WHERE producao.finalizado IS NOT NULL 
+                            LEFT OUTER JOIN `pcp_recebido` as recebido on recebido.pacote = producao.pacote and recebido.finalizado IS NOT NULL and recebido.deleted_at IS NULL
+                            WHERE producao.finalizado IS NOT NULL and producao.deleted_at IS NULL
                              ORDER by `id` DESC");
 
                             // $recebidos2 =("SELECT * FROM `testefull` WHERE `usuario` = '$usuario' AND `data_hora` BETWEEN '$datahorainicio' AND '$datahorafinal' ORDER BY `data_hora` DESC");                   
@@ -208,8 +208,8 @@ $datahoje = date("Y-m-d");
                     case WHEN recebido.pacote <> '' THEN recebido.data_hora ELSE producao.data_hora END 'Data Hora Atualizada',
                     case WHEN recebido.pacote <> '' THEN recebido.usuario ELSE producao.usuario END 'Usuario Atualizado'
                     FROM `db` as producao
-                    LEFT OUTER JOIN `pcp_recebido` as recebido  on recebido.pacote = producao.pacote and recebido.deleted_at IS NOT NULL
-                    WHERE producao.`deleted_at` BETWEEN '$Datainicio 00:00:00' AND '$Datafinal 23:59:59' and producao.deleted_at IS NOT NULL
+                    LEFT OUTER JOIN `pcp_recebido` as recebido  on recebido.pacote = producao.pacote and recebido.deleted_at IS NULL and recebido.finalizado IS NOT NULL
+                    WHERE producao.`finalizado` BETWEEN '$Datainicio 00:00:00' AND '$Datafinal 23:59:59' and producao.deleted_at IS NULL and producao.finalizado IS NOT NULL
                      ORDER by `id` DESC");
 
                     // $recebidos2 =("SELECT * FROM `testefull` WHERE `usuario` = '$usuario' AND `data_hora` BETWEEN '$datahorainicio' AND '$datahorainicio' ORDER BY `data_hora` DESC");                   
@@ -237,48 +237,7 @@ $datahoje = date("Y-m-d");
                                     <td> <?php echo $row['Usuario Atualizado'] ?> </td>
                                     <td> <?php echo date('d/m/Y H:i:s', strtotime($row['Data Hora Atualizada'])) ?> </td>
                                     
-                                        <?php if( $row['id_pacote'] == "" ){
-                                            }else{
-                                                ?>
-                                                
-                                                <i id="excluir_item<?php echo $row['id'] ?>" data-toggle="modal" data-target="#deletar<?php echo $row['id'] ?>" class='fas fa-trash-alt' style='font-size:24px;color:red'></i>
-                                                <form action="deletar_item.php" method="POST">
-                                                                        <div class="modal fade" id="deletar<?php echo $row['id'] ?>" tabindex="-1" role="dialog"
-                                                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                                            <div class="modal-dialog" role="document">
-                                                                                <div class="modal-content">
-                                                                                    <div class="modal-header ">
-                                                                                        <h5 class="modal-title" id="exampleModalLabel">Excluir Pacote</h5>
-                                                                                        <button type="button" class="close" data-dismiss="modal"
-                                                                                            aria-label="Close">
-                                                                                            <span aria-hidden="true">&times;</span>
-                                                                                        </button>
-                                                                                    </div>
-                                                                                    <div class="modal-body">
-                                                                                        Você tem certeza que deseja excluir o Pacote: <b>
-                                                                                            <?php echo $row['pacote'] ?> </b> ?
-                                                                                    </div>
-                                                                                    <div class="modal-body">
-                                                                                            Referente ao Pedido: <b>
-                                                                                            <?php echo $row['pedido'] ?> </b> ?
-                                                                                    </div>
-
-                                                                                    <input name="id_pacote" type="hidden" id="inputName"
-                                                                                        value="<?php echo $row['id_pacote'] ?>" class="form-control validate">
-
-                                                                                    <div class="modal-footer justify-content-center">
-                                                                                        <button type="submit" class="btn btn-primary">Sim</button>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                    </form>
-                                                <?php
-                                            }
-                                            ?>
-                                         
-
-                                    </td>
+                                               
                         </tr>
                     <?php }; ?>
 

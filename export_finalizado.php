@@ -64,8 +64,8 @@ if (empty($_GET['dateini'])) {
             case WHEN recebido.pacote <> ''  THEN recebido.data_hora ELSE producao.data_hora END 'Data Hora Atualizada',
             case WHEN recebido.pacote <> ''  THEN recebido.usuario ELSE producao.usuario END 'Usuario Atualizado'
             FROM `db` as producao
-            LEFT OUTER JOIN `pcp_recebido` as recebido on recebido.pacote = producao.pacote and recebido.finalizado IS NOT NULL
-            WHERE producao.finalizado IS NOT NULL 
+            LEFT OUTER JOIN `pcp_recebido` as recebido on recebido.pacote = producao.pacote and recebido.finalizado IS NOT NULL and recebido.deleted_at IS NULL
+            WHERE producao.finalizado IS NOT NULL and producao.deleted_at IS NULL
              ORDER by `id` DESC");
             
             $resultado_usuarios = mysqli_query($conexao, $recebidos2);
@@ -140,11 +140,11 @@ if (empty($_GET['dateini'])) {
                         case WHEN recebido.pacote <> '' THEN recebido.data_hora ELSE producao.data_hora END 'Data Hora Atualizada',
                         case WHEN recebido.pacote <> '' THEN recebido.usuario ELSE producao.usuario END 'Usuario Atualizado'
                         FROM `db` as producao
-                        LEFT OUTER JOIN `pcp_recebido` as recebido  on recebido.pacote = producao.pacote and recebido.deleted_at IS NOT NULL
-                        WHERE producao.`deleted_at` BETWEEN '$Datainicio 00:00:00' AND '$Datafinal 23:59:59' and producao.deleted_at IS NOT NULL
+                        LEFT OUTER JOIN `pcp_recebido` as recebido  on recebido.pacote = producao.pacote and recebido.deleted_at IS NULL and recebido.finalizado IS NOT NULL
+                        WHERE producao.`finalizado` BETWEEN '$Datainicio 00:00:00' AND '$Datafinal 23:59:59' and producao.deleted_at IS NULL and producao.finalizado IS NOT NULL
                          ORDER by `id` DESC");
                         
-                        $resultado_usuarios = mysqli_query($conexao, $result_usuarios);
+                        $resultado_usuarios = mysqli_query($conexao, $recebidos2);
                         while ($row = mysqli_fetch_assoc($resultado_usuarios)) {
 
                             if ($row['Status'] == 'Faltando Receber') {
