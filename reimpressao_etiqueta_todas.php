@@ -48,12 +48,12 @@ Altura (milímetros)	110 -->
   }
 </script>
 
-<!-- <style>
+<style>
     body {
         width: 800px;
-        height: 110px;
+        /* height: 110px; */
     }
-</style> -->
+</style>
 
 <?php
 
@@ -251,7 +251,7 @@ while ($row = mysqli_fetch_assoc($recebidos3)) {
        window.print();
 </script>
        <?php 
-       echo "</br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>";
+       echo "</br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>";
        
     }
     echo '<meta http-equiv="refresh" content="0;URL=recebido.php" />';
