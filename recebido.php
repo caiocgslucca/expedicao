@@ -182,7 +182,7 @@ $datahoje = date("Y-m-d");
                                                                                     <div class="modal-body">
                                                                                              <div class="form-group shadow-textarea">
                                                                                                 <label for="exampleFormControlTextarea6"><b>Observação</b></label>
-                                                                                                <textarea autofocus name="observacao" value="" class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="3"></textarea>
+                                                                                                <textarea style="text-transform: uppercase;" autofocus name="observacao" value="" class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="3"></textarea>
                                                                                                  </div> 
                                                                                     </div>
 
@@ -299,8 +299,8 @@ $datahoje = date("Y-m-d");
                     case WHEN recebido.pacote <> '' THEN recebido.data_hora ELSE producao.data_hora END 'Data Hora Atualizada',
                     case WHEN recebido.pacote <> '' THEN recebido.usuario ELSE producao.usuario END 'Usuario Atualizado'
                     FROM `db` as producao
-                    LEFT OUTER JOIN `pcp_recebido` as recebido  on recebido.pacote = producao.pacote and recebido.deleted_at IS NULL and and recebido.finalizado IS NULL
-                    WHERE producao.`data_hora` BETWEEN '$Datainicio 00:00:00' AND '$Datafinal 23:59:59' and producao.deleted_at IS NULL and and producao.finalizado IS NULL
+                    LEFT OUTER JOIN `pcp_recebido` as recebido  on recebido.pacote = producao.pacote and recebido.deleted_at IS NULL and recebido.finalizado IS NULL
+                    WHERE producao.`data_hora` BETWEEN '$Datainicio 00:00:00' AND '$Datafinal 23:59:59' and producao.deleted_at IS NULL and producao.finalizado IS NULL
                      ORDER by `id` DESC");
 
                     // $recebidos2 =("SELECT * FROM `testefull` WHERE `usuario` = '$usuario' AND `data_hora` BETWEEN '$datahorainicio' AND '$datahorainicio' ORDER BY `data_hora` DESC");                   
@@ -329,6 +329,44 @@ $datahoje = date("Y-m-d");
                                     <td> <?php echo date('d/m/Y H:i:s', strtotime($row['Data Hora Atualizada'])) ?> </td>
                                     <td class="text-center">
                                         <?php if( $row['id_pacote'] == "" ){
+                                            ?>
+                                              <button style='font-size:24px; border:none; color: limegreen; background-color: transparent;'><i  data-toggle="modal" data-target="#receber<?php echo $row['id'] ?>" class='fas fa-arrow-right' aria-hidden="true"></i></button>
+                                                        
+                                              <form action="receber_pacote.php" method="POST" enctype="multipart/form-data">
+                                                          <input name="biper" type="hidden" value="<?php echo $row['pacote'] ?>" >
+                                                      <div class="modal fade" id="receber<?php echo $row['id'] ?>" tabindex="-1" role="dialog"
+                                                                  aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                  <div class="modal-dialog" role="document">
+                                                                      <div class="modal-content">
+                                                                          <div class="modal-header ">
+                                                                              <h5 class="modal-title" id="exampleModalLabel">Receber Pacote</h5>
+                                                                              <button type="button" class="close" data-dismiss="modal"
+                                                                                  aria-label="Close">
+                                                                                  <span aria-hidden="true">&times;</span>
+                                                                              </button>
+                                                                          </div>
+                                                                          <div class="modal-body">
+                                                                              Receber o Pacote: <b>
+                                                                                  <?php echo $row['pacote'] ?> </b> ?
+                                                                          </div>
+                                                                          <div class="modal-body">
+                                                                                   <div class="form-group shadow-textarea">
+                                                                                      <label for="exampleFormControlTextarea6"><b>Observação</b></label>
+                                                                                      <textarea style="text-transform: uppercase;" autofocus name="observacao" value="" class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="3"></textarea>
+                                                                                       </div> 
+                                                                          </div>
+
+                                                                          <input name="id_pacote" type="hidden" id="inputName"
+                                                                              value="<?php echo $row['id_pacote'] ?>" class="form-control validate">
+
+                                                                          <div class="modal-footer justify-content-center">
+                                                                              <button type="submit" class="btn btn-primary">Sim</button>
+                                                                          </div>
+                                                                      </div>
+                                                                  </div>
+                                                              </div>
+                                                      </form>
+                                                              <?php
                                             }else{
                                                 ?>
                                                 
