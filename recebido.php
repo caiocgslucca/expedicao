@@ -226,7 +226,7 @@ $datahoje = date("Y-m-d");
                                             }else{
                                                 ?>
 
-                                                    <form action="etiqueta.php" method="POST" enctype="multipart/form-data">
+                                                    <form action="reimpressao_etiqueta.php" method="POST" enctype="multipart/form-data">
                                                         <button style='font-size:24px; border:none; background-color: transparent;'><i class='fas fa-print' aria-hidden="true"></i></button>
                                                         <!-- <i class='fas fa-print' style='font-size:24px;color:black' aria-hidden="true"></i> -->
                                                         <input name="pacote" type="hidden" value="<?php echo $row['pacote'] ?>" >

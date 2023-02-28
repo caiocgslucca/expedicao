@@ -6,7 +6,7 @@ error_reporting(E_ERROR | E_PARSE);
 include('conexao.php');
 date_default_timezone_set('America/recife');
 
-$pacote = $_SESSION['pacote'];
+$pacote = $_POST['pacote'];
 
 $datahorahora = (date('d/m/Y H:i:s'));
 
