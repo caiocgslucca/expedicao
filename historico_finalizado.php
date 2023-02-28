@@ -87,7 +87,7 @@ $datahoje = date("Y-m-d");
             $vazio = "";
         ?>
             <?php
-            echo '<td><a button class="btn btn-success" href="export_recebido.php?dateini=' . "" . '">Clique aqui para fazer o download <p> Referente à Data: ' . $data . '</p> </a></td>';
+            echo '<td><a button class="btn btn-success" href="export_finalizado.php?dateini=' . "" . '">Clique aqui para fazer o download <p> Referente à Data: ' . $data . '</p> </a></td>';
             echo "<br>";
             ?>
                     </div>
@@ -102,6 +102,7 @@ $datahoje = date("Y-m-d");
                             <th class="th-sm">Pacote</th>
                             <th class="th-sm">Pedido</th>
                             <th class="th-sm">Cliente</th>
+                            <th class="th-sm">BOX</th>
                             <th class="th-sm">SKU</th>
                             <th class="th-sm">Produto</th>
                             <th class="th-sm">Nota Fiscal</th>
@@ -148,6 +149,7 @@ $datahoje = date("Y-m-d");
                                     <td> <?php echo $row['pacote'] ?> </td>
                                     <td> <?php echo $row['pedido'] ?> </td>
                                     <td> <?php echo $row['nome_cliente'] ?> </td>
+                                    <td> <?php echo $row['box'] ?> </td>
                                     <td> <?php echo $row['sku'] ?> </td>
                                     <td> <?php echo $row['descricao'] ?> </td>
                                     <td> <?php echo $row['nota_fiscal'] ?> </td>
@@ -173,7 +175,7 @@ $datahoje = date("Y-m-d");
             $Datainicio = date('Y-m-d', strtotime($_POST['dateinicio']));
             $Datafinal = date('Y-m-d', strtotime($_POST['datefinal']));
 
-            echo '</div></div> <div class="container" style="text-align-last: center"> <td><a button class="btn btn-success" href="export_recebido.php?dateini=' . $Datainicio . ' 00:00:00' . '&datefinal=' . $Datafinal . ' 23:59:59' . '">Clique aqui para fazer o download  <p> Referente à Data: ' . date('d/m/Y', strtotime($Datainicio)) . " | " . date('d/m/Y', strtotime($Datafinal)) . '  </p>  </a></td> </div>';
+            echo '</div></div> <div class="container" style="text-align-last: center"> <td><a button class="btn btn-success" href="export_finalizado.php?dateini=' . $Datainicio . ' 00:00:00' . '&datefinal=' . $Datafinal . ' 23:59:59' . '">Clique aqui para fazer o download  <p> Referente à Data: ' . date('d/m/Y', strtotime($Datainicio)) . " | " . date('d/m/Y', strtotime($Datafinal)) . '  </p>  </a></td> </div>';
             echo "<br>";
 ?>
 
@@ -186,6 +188,7 @@ $datahoje = date("Y-m-d");
                             <th class="th-sm">Pacote</th>
                             <th class="th-sm">Pedido</th>
                             <th class="th-sm">Cliente</th>
+                            <th class="th-sm">BOX</th>
                             <th class="th-sm">Produto</th>
                             <th class="th-sm">Nota Fiscal</th>
                             <th class="th-sm">Observação</th>
@@ -226,6 +229,7 @@ $datahoje = date("Y-m-d");
                                     <td> <?php echo $row['pacote'] ?> </td>
                                     <td> <?php echo $row['pedido'] ?> </td>
                                     <td> <?php echo $row['nome_cliente'] ?> </td>
+                                    <td> <?php echo $row['box'] ?> </td>
                                     <td> <?php echo $row['descricao'] ?> </td>
                                     <td> <?php echo $row['nota_fiscal'] ?> </td>
                                     <td> <?php echo $row['obs'] ?> </td>
