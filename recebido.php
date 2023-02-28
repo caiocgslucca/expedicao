@@ -79,8 +79,6 @@ $datahoje = date("Y-m-d");
                                 <button type="submit" class="btn btn-default btn-lg">Buscar</button>
                             </div>
                         </div>
-
-
        
         <?php
         if (empty($_POST['dateinicio'])) {
@@ -93,6 +91,34 @@ $datahoje = date("Y-m-d");
                     </div>
 
              </form>
+
+             <button data-toggle="modal" data-target="#receber_total<?php echo $pedido ?>" type="submit" class="btn btn-info">Receber Total</button>
+<form action="receber_total.php" method="POST">
+    <div class="modal fade" id="receber_total<?php echo $pedido ?>" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header ">
+                    <h5 class="modal-title" id="exampleModalLabel">RECEBER TOTAL</h5>
+                    <button type="button" class="close" data-dismiss="modal"
+                        aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Você tem certeza que deseja Receber todos os Pacote: <b>
+                        <?php echo $pedido ?> </b> ?
+                </div>
+                <input name="pedido" type="hidden" id="inputName"
+                    value="<?php echo $pedido ?>" class="form-control validate">
+                <div class="modal-footer justify-content-center">
+                    <button type="submit" class="btn btn-primary">Sim</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
             <div class="flex-center flex-column" style="display:block;">
                 <div class="card card-body">
                     <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
