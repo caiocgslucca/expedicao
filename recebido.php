@@ -236,7 +236,7 @@ $datahoje = date("Y-m-d");
                                                        if( $row['qtd_itens'] > 1 ){
                                                            ?>
                                                           <form action="reimpressao_etiqueta_todas.php" method="POST" enctype="multipart/form-data">
-                                                              <button style='font-size:24px; border:none; background-color: transparent;'><i class='fas fa-cloud-download-alt' aria-hidden="true"></i></button>
+                                                              <button style='font-size:24px; color:blue; border:none; background-color: transparent;'><i class='fas fa-cloud-download-alt' aria-hidden="true"></i></button>
                                                               <!-- <i class='fas fa-print' style='font-size:24px;color:black' aria-hidden="true"></i> -->
                                                               <input name="pedido" type="hidden" value="<?php echo $row['pedido'] ?>" >
                                                             </form>
