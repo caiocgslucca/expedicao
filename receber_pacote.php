@@ -10,12 +10,12 @@ $status = 1;
 
  $pacote_biper  =  $_POST['biper'];
 
- $result = ("SELECT db1.pedido, db1.pacote, db1.nota_fiscal, COUNT(db1.pedido) as qtde_item, 
-( SELECT COUNT(pedido) FROM `db` as db2 WHERE db2.pedido = db1.pedido and db2.finalizado is null) as qtde_total_pedido,
-( SELECT COUNT(pr.pacote) from pcp_recebido pr where pr.pacote = db1.pacote and pr.finalizado is null) as pacote_recebido,
-( SELECT COUNT(pr.pedido) from pcp_recebido pr where pr.pedido = db1.pedido and pr.finalizado is null) as pedido_recebido
+  $result = ("SELECT db1.pedido, db1.pacote, db1.nota_fiscal, COUNT(db1.pedido) as qtde_item, 
+( SELECT COUNT(pedido) FROM `db` as db2 WHERE db2.pedido = db1.pedido and db2.finalizado is null and db2.deleted_at is null) as qtde_total_pedido,
+( SELECT COUNT(pr.pacote) from pcp_recebido pr where pr.pacote = db1.pacote and pr.finalizado is null and pr.deleted_at is null ) as pacote_recebido,
+( SELECT COUNT(pr.pedido) from pcp_recebido pr where pr.pedido = db1.pedido and pr.finalizado is null and pr.deleted_at is null ) as pedido_recebido
 FROM `db` as db1
-where db1.pacote = '$pacote_biper' and db1.finalizado is null ");
+where db1.pacote = '$pacote_biper' and db1.finalizado is null and db1.deleted_at is null ");
 
 $recebidos = mysqli_query($conexao, $result);
 
