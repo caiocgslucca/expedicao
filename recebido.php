@@ -232,6 +232,17 @@ $datahoje = date("Y-m-d");
                                                         <input name="pacote" type="hidden" value="<?php echo $row['pacote'] ?>" >
                                                         
                                                     </form>
+                                                    <?php 
+                                                       if( $row['qtd_itens'] > 1 ){
+                                                           ?>
+                                                          <form action="reimpressao_etiqueta_todas.php" method="POST" enctype="multipart/form-data">
+                                                              <button style='font-size:24px; border:none; background-color: transparent;'><i class='fas fa-cloud-download-alt' aria-hidden="true"></i></button>
+                                                              <!-- <i class='fas fa-print' style='font-size:24px;color:black' aria-hidden="true"></i> -->
+                                                              <input name="pedido" type="hidden" value="<?php echo $row['pedido'] ?>" >
+                                                            </form>
+                                                         <?php   
+                                                            }
+                                                        ?>
                                                     <button style='font-size:24px;color:red; border:none; background-color: transparent;'>
                                                         <i id="excluir_item<?php echo $row['id'] ?>" data-toggle="modal" data-target="#deletar<?php echo $row['id'] ?>" class='fas fa-trash-alt'  aria-hidden="true"></i>
                                                     </button>
