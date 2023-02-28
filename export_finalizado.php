@@ -10,9 +10,9 @@ $usuario = $_SESSION['usuario'];
 $id_status = 1;
 $data = date("Y/m/d");
 
-// $arquivo = $datahora.'_'.'finalizado.xls';
-// header ("Content-Type: application/xls");
-// header ("Content-Disposition: attachment; filename= {$arquivo}" );
+$arquivo = $datahora.'_'.'finalizado.xls';
+header ("Content-Type: application/xls");
+header ("Content-Disposition: attachment; filename= {$arquivo}" );
 
 ?>
 <style>
