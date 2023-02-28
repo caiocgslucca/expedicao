@@ -248,4 +248,4 @@ Altura (milímetros)	110 -->
  <script>
        window.print();
 </script>
-<?php echo '<meta http-equiv="refresh" content="0;URL=receber.php" />'; ?>
+<?php echo '<meta http-equiv="refresh" content="0;URL=recebido.php" />'; ?>
