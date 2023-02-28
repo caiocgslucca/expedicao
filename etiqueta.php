@@ -10,7 +10,7 @@ $pacote = $_SESSION['pacote'];
 
 $datahorahora = (date('d/m/Y H:i:s'));
 
-$recebidos2 = ("SELECT * FROM `db` WHERE pacote = '$pacote' and producao.deleted_at IS NULL and producao.finalizado IS NULL");
+$recebidos2 = ("SELECT * FROM `db` WHERE pacote = '$pacote' and deleted_at IS NULL and finalizado IS NULL");
 $recebidos3 = mysqli_query($conexao, $recebidos2);
 
 while ($row = mysqli_fetch_assoc($recebidos3)) {
