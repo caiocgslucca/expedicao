@@ -144,7 +144,7 @@ $datahoje = date("Y-m-d");
 
                             <?php
                             // $recebidos2 = ("SELECT * FROM `pcp_recebido` WHERE  `data_hora` BETWEEN '$datahoje 00:00:00' AND '$datahoje 23:59:59' ORDER BY `pcp_recebido`.`data_hora` DESC");
-                           echo $recebidos2 = ("SELECT 
+                            $recebidos2 = ("SELECT 
                             producao.*,
                             recebido.obs,
                             recebido.id as id_pacote,
