@@ -47,6 +47,7 @@ if (empty($_GET['dateini'])) {
                             <th class="th-sm">Status</th>
                             <th class="th-sm">Usuario</th>
                             <th class="th-sm">Data Hora</th>
+                            <th class="th-sm">Data Hora Finalizada</th>
             </tr>
         </thead>
         <tbody>
@@ -59,6 +60,7 @@ if (empty($_GET['dateini'])) {
             // $result_usuarios = ("SELECT * FROM `pcp_recebido` WHERE  `data_hora` BETWEEN '$data 00:00:00' AND '$data 23:59:59' ORDER BY `pcp_recebido`.`data_hora` DESC");
             $recebidos2 = ("SELECT 
             producao.*,
+            producao.finalizado 'Data finalizada',
             recebido.obs,
             recebido.id as id_pacote,
             case WHEN recebido.pacote <> ''  THEN 'Recebido' ELSE 'Faltando Receber' END 'Status',
@@ -92,6 +94,7 @@ if (empty($_GET['dateini'])) {
                                     <td> <?php echo $status ?> </td>
                                     <td> <?php echo $row['Usuario Atualizado'] ?> </td>
                                     <td> <?php echo date('d/m/Y H:i:s', strtotime($row['Data Hora Atualizada'])) ?> </td>
+                                    <td> <?php echo date('d/m/Y H:i:s', strtotime($row['Data finalizada'])) ?> </td>
                             </tr>
 
             <?php }; ?>
@@ -125,6 +128,7 @@ if (empty($_GET['dateini'])) {
                             <th class="th-sm">Status</th>
                             <th class="th-sm">Usuario</th>
                             <th class="th-sm">Data Hora</th>
+                            <th class="th-sm">Data Hora Finalizada</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -136,6 +140,7 @@ if (empty($_GET['dateini'])) {
                         // $result_usuarios = ("SELECT * FROM `pcp_recebido` WHERE  `data_hora` BETWEEN '$Datainicio 00:00:00' AND '$Datafinal 23:59:59' ORDER BY `pcp_recebido`.`data_hora` DESC");
                         $recebidos2 = ("SELECT 
                     producao.*,
+                    producao.finalizado 'Data finalizada',
                     recebido.obs,
                     recebido.id as id_pacote,
                     case WHEN recebido.pacote <> ''  THEN 'Recebido' ELSE 'Faltando Receber' END 'Status',
@@ -171,6 +176,7 @@ if (empty($_GET['dateini'])) {
                                     <td> <?php echo $status ?> </td>
                                     <td> <?php echo $row['Usuario Atualizado'] ?> </td>
                                     <td> <?php echo date('d/m/Y H:i:s', strtotime($row['Data Hora Atualizada'])) ?> </td>
+                                    <td> <?php echo date('d/m/Y H:i:s', strtotime($row['Data finalizada'])) ?> </td>
                             </tr>
 
                         <?php }; ?>
