@@ -119,6 +119,7 @@ $datahoje = date("Y-m-d");
     </div>
 </form>
 
+
             <div class="flex-center flex-column" style="display:block;">
                 <div class="card card-body">
                     <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
@@ -128,6 +129,7 @@ $datahoje = date("Y-m-d");
                             <th class="th-sm">Pacote</th>
                             <th class="th-sm">Pedido</th>
                             <th class="th-sm">Cliente</th>
+                            <th class="th-sm">BOX</th>
                             <th class="th-sm">SKU</th>
                             <th class="th-sm">Produto</th>
                             <th class="th-sm">Nota Fiscal</th>
@@ -142,7 +144,7 @@ $datahoje = date("Y-m-d");
 
                             <?php
                             // $recebidos2 = ("SELECT * FROM `pcp_recebido` WHERE  `data_hora` BETWEEN '$datahoje 00:00:00' AND '$datahoje 23:59:59' ORDER BY `pcp_recebido`.`data_hora` DESC");
-                            $recebidos2 = ("SELECT 
+                           echo $recebidos2 = ("SELECT 
                             producao.*,
                             recebido.obs,
                             recebido.id as id_pacote,
@@ -174,6 +176,7 @@ $datahoje = date("Y-m-d");
                                     <td> <?php echo $row['pacote'] ?> </td>
                                     <td> <?php echo $row['pedido'] ?> </td>
                                     <td> <?php echo $row['nome_cliente'] ?> </td>
+                                    <td> <?php echo $row['box'] ?> </td>
                                     <td> <?php echo $row['sku'] ?> </td>
                                     <td> <?php echo $row['descricao'] ?> </td>
                                     <td> <?php echo $row['nota_fiscal'] ?> </td>
@@ -314,6 +317,7 @@ $datahoje = date("Y-m-d");
                             <th class="th-sm">Pacote</th>
                             <th class="th-sm">Pedido</th>
                             <th class="th-sm">Cliente</th>
+                            <th class="th-sm">BOX</th>
                             <th class="th-sm">SKU</th>
                             <th class="th-sm">Produto</th>
                             <th class="th-sm">Nota Fiscal</th>
@@ -357,6 +361,7 @@ $datahoje = date("Y-m-d");
                                     <td> <?php echo $row['pacote'] ?> </td>
                                     <td> <?php echo $row['pedido'] ?> </td>
                                     <td> <?php echo $row['nome_cliente'] ?> </td>
+                                    <td> <?php echo $row['box'] ?> </td>
                                     <td> <?php echo $row['sku'] ?> </td>
                                     <td> <?php echo $row['descricao'] ?> </td>
                                     <td> <?php echo $row['nota_fiscal'] ?> </td>

@@ -9,6 +9,7 @@ $datahora = (date('d-m-Y_H:i:s'));
 $usuario = $_SESSION['usuario'];
 $id_status = 1;
 $data = date("Y/m/d");
+$datahoje = date("Y-m-d");
 
 $arquivo = $datahora.'_'.'finalizado.xls';
 header ("Content-Type: application/xls");
@@ -65,7 +66,7 @@ if (empty($_GET['dateini'])) {
             case WHEN recebido.pacote <> ''  THEN recebido.usuario ELSE producao.usuario END 'Usuario Atualizado'
             FROM `db` as producao
             LEFT OUTER JOIN `pcp_recebido` as recebido on recebido.pacote = producao.pacote and recebido.finalizado IS NOT NULL and recebido.deleted_at IS NULL
-            WHERE producao.finalizado IS NOT NULL and producao.deleted_at IS NULL
+            WHERE producao.finalizado IS NOT NULL and producao.deleted_at IS NULL and producao.finalizado BETWEEN '$datahoje 00:00:00' AND '$datahoje 23:59:59'
              ORDER by `id` DESC");
             
             $resultado_usuarios = mysqli_query($conexao, $recebidos2);
