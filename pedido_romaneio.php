@@ -34,7 +34,7 @@ $id_status = 1;
         <title>Pesquisar</title>
     </head>
 <hr>
-<form action="result_pesquisa.php" method="GET">
+<form action="result_pesquisa_romaneio.php" method="GET">
 
     <div class="flex-center flex-column">
         <!-- Grid column -->

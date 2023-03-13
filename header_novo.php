@@ -28,16 +28,31 @@ $datahora = (date('H:i:s d-m-Y'));
 
             <div class="dropdown">
                 <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    MENU
+                    MENU EAD
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <!-- <a class="dropdown-item" href="dymo.php">Etiqueta SAMSUNG</a> -->
-                    <a class="dropdown-item" href="receber.php">Receber Pacote</a>
+                    <a class="dropdown-item" href="receber">Receber Pacote</a>
                     <!-- <a class="dropdown-item" href="receber_pcp.php">Receber PCP</a> -->
                     <!-- <a class="dropdown-item" href="gerenciar.php">Gerenciar</a> -->
-                    <a class="dropdown-item" href="importar_csv.php">Importar CSV</a>
+                    <a class="dropdown-item" href="importar_csv">Importar CSV</a>
                     <!-- <a class="dropdown-item" href="pesquisar.php">Pesquisar</a> -->
-                    <a class="dropdown-item" href="logout.php">Sair</a>
+                    <a class="dropdown-item" href="logout">Sair</a>
+                </div>
+            </div>
+            
+            <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    MENU Romaneio
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <!-- <a class="dropdown-item" href="dymo.php">Etiqueta SAMSUNG</a> -->
+                    <a class="dropdown-item" href="receber_romaneio">Receber Romaneio</a>
+                    <!-- <a class="dropdown-item" href="receber_pcp.php">Receber PCP</a> -->
+                    <!-- <a class="dropdown-item" href="gerenciar.php">Gerenciar</a> -->
+                    <a class="dropdown-item" href="importar_csv_romaneio">Importar CSV Romaneio</a>
+                    <!-- <a class="dropdown-item" href="pesquisar.php">Pesquisar</a> -->
+                    <a class="dropdown-item" href="logout">Sair</a>
                 </div>
             </div>
             

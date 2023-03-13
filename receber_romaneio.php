@@ -23,15 +23,15 @@ $datahorafinal = (date('Y-m-d 23:59:59'));
 
 ?>
 
-<form method="POST" action="receber_pacote.php" enctype="multipart/form-data">
-    <title>Receber-Pacote</title>
+<form method="POST" action="receber_pacote_romaneio" enctype="multipart/form-data">
+    <title>Receber-Romaneio</title>
 
     <ul class="nav nav-tabs justify-content-center lighten-4 py-4">
         <li class="nav-item">
-            <a class="nav-link active" href="receber">Receber Pacote</a>
+            <a class="nav-link active" href="receber_romaneio">Receber Romaneio</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link " href="recebido">Hitórico Recebido</a>
+            <a class="nav-link " href="recebido_romaneio">Hitórico Recebido Romaneio</a>
         </li>
         <!-- <li class="nav-item">
             <a class="nav-link " href="destino.php">Produtividade</a>
@@ -61,26 +61,26 @@ $datahorafinal = (date('Y-m-d 23:59:59'));
 
                         <?php
                         $select_painel = ("SELECT
-                        case WHEN recebido.pacote <> '' THEN 'Recebido' ELSE 'Faltando Receber' END 'Status',
-                        case WHEN recebido.pacote <> '' THEN COUNT(recebido.pacote) ELSE COUNT(producao.pacote) END 'Qtde.',
+                        case WHEN recebido.nro_etiqueta <> '' THEN 'Recebido' ELSE 'Faltando Receber' END 'Status',
+                        case WHEN recebido.nro_etiqueta <> '' THEN COUNT(recebido.nro_etiqueta) ELSE COUNT(producao.nro_etiqueta) END 'Qtde.',
                         
-                        case WHEN recebido.pacote <> '' THEN ROUND(COUNT(recebido.pacote) / (SELECT
-                        COUNT(producao.pacote)
-                        FROM `db` as producao 
-                        WHERE producao.deleted_at IS NULL and producao.finalizado IS NULL) *100,2) ELSE ROUND(COUNT(producao.pacote) / (SELECT
-                        COUNT(producao.pacote)
-                        FROM `db` as producao 
+                        case WHEN recebido.nro_etiqueta <> '' THEN ROUND(COUNT(recebido.nro_etiqueta) / (SELECT
+                        COUNT(producao.nro_etiqueta)
+                        FROM `expedicao` as producao 
+                        WHERE producao.deleted_at IS NULL and producao.finalizado IS NULL) *100,2) ELSE ROUND(COUNT(producao.nro_etiqueta) / (SELECT
+                        COUNT(producao.nro_etiqueta)
+                        FROM `expedicao` as producao 
                         WHERE producao.deleted_at IS NULL and producao.finalizado IS NULL) *100,2) END '%'
                         
-                        FROM `db` as producao
-                        LEFT OUTER JOIN `pcp_recebido` as recebido on recebido.pacote = producao.pacote and recebido.deleted_at IS NULL and recebido.finalizado IS NULL 
+                        FROM `expedicao` as producao
+                        LEFT OUTER JOIN `expedicao_recebido` as recebido on recebido.nro_etiqueta = producao.nro_etiqueta and recebido.deleted_at IS NULL and recebido.finalizado IS NULL 
                         WHERE producao.deleted_at IS NULL and producao.finalizado IS NULL GROUP BY `Status` 
                         UNION
                         SELECT DISTINCT
                         'Total' as 'Status',
-                        COUNT(pacote) as 'Qtde.',
+                        COUNT(nro_etiqueta) as 'Qtde.',
                         '' as '%'
-                        FROM `db` 
+                        FROM `expedicao` 
                         WHERE deleted_at IS NULL and finalizado IS NULL ORDER BY `Qtde.` ASC
                         
                         ");
@@ -128,7 +128,7 @@ $datahorafinal = (date('Y-m-d 23:59:59'));
         <?php
 
         $ok = 0;
-        $recebidos2 = ("SELECT * FROM `pcp_recebido` where usuario = '$usuario' and deleted_at IS NULL and finalizado IS NULL");
+        $recebidos2 = ("SELECT * FROM `expedicao_recebido` where usuario = '$usuario' and deleted_at IS NULL and finalizado IS NULL");
         $recebidos3 = mysqli_query($conexao, $recebidos2);
         while ($row = mysqli_fetch_assoc($recebidos3)) {
             $ok++;
@@ -142,7 +142,9 @@ $datahorafinal = (date('Y-m-d 23:59:59'));
                     <th class="th-sm">id</th>
                     <th class="th-sm">Pacote</th>
                     <th class="th-sm">Pedido</th>
-                    <th class="th-sm">Nota Fiscal</th>
+                    <th class="th-sm">Documento</th>
+                    <th class="th-sm">Cliente</th>
+                    <th class="th-sm">Observação</th>
                     <th class="th-sm">Usuario</th>
                     <th class="th-sm">Data Hora</th>
                 </tr>
@@ -150,7 +152,7 @@ $datahorafinal = (date('Y-m-d 23:59:59'));
             <tbody>
 
                 <?php
-                $recebidos = ("SELECT * FROM `pcp_recebido` where usuario = '$usuario' and deleted_at IS NULL and finalizado IS NULL ORDER BY `pcp_recebido`.`id` DESC ");
+                $recebidos = ("SELECT * FROM `expedicao_recebido` where usuario = '$usuario' and deleted_at IS NULL and finalizado IS NULL ORDER BY `expedicao_recebido`.`id` DESC ");
 
                 // $recebidos2 =("SELECT * FROM `testefull` WHERE `usuario` = '$usuario' AND `data_hora` BETWEEN '$datahorainicio' AND '$datahorafinal' ORDER BY `data_hora` DESC");                   
                 $result = mysqli_query($conexao, $recebidos);
@@ -170,13 +172,19 @@ $datahorafinal = (date('Y-m-d 23:59:59'));
                             <?php echo $index ?>
                         </td>
                         <td>
-                            <?php echo $row['pacote'] ?>
+                            <?php echo $row['nro_etiqueta']; ?>
                         </td>
                         <td>
-                            <?php echo $row['pedido'] ?>
+                            <?php echo $row['nro_pedido']; ?>
                         </td>
                         <td>
-                            <?php echo $row['nota_fiscal'] ?>
+                            <?php echo $row['nro_documento']; ?>
+                        </td>
+                        <td>
+                            <?php echo $row['nome_pessoa_visita']; ?>
+                        </td>
+                        <td>
+                            <?php echo $row['obs']; ?>
                         </td>
                         <td>
                             <?php echo $row['usuario'] ?>

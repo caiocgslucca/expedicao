@@ -1,0 +1,201 @@
+<?php
+session_start();
+include('verifica_login.php');
+ob_start();
+include('conexao.php');
+// include('header5.php');
+date_default_timezone_set('America/recife');
+$datahora = (date('d-m-Y_H:i:s'));
+$usuario = $_SESSION['usuario'];
+$id_status = 1;
+$data = date("Y/m/d");
+$datahoje = date("Y-m-d");
+
+$arquivo = $datahora.'_'.'finalizado_romaneio.xls';
+header ("Content-Type: application/xls");
+header ("Content-Disposition: attachment; filename= {$arquivo}" );
+
+?>
+<style>
+table {
+  border-collapse: collapse;
+}
+
+table, td, th {
+  border: 1px solid black;
+}
+</style>
+
+<?php
+
+if (empty($_GET['dateini'])) {
+    $Datainicio = "";
+?>
+    <table>
+        <thead>
+            <tr>
+                        
+                            <th class="th-sm">id</th>
+                            <th class="th-sm">Nro. Documento</th>
+                            <th class="th-sm">Nro. Pedido</th>
+                            <th class="th-sm">Nro. Etiqueta</th>
+                            <th class="th-sm">Dt. Recebimento</th>
+                            <th class="th-sm">Nro. Romaneio Expedição</th>
+                            <th class="th-sm">Qtde. Volumes</th>
+                            <th class="th-sm">Qtde. Itens</th>
+                            <th class="th-sm">Status</th>
+                            <th class="th-sm">Unidade Atual</th>
+                            <th class="th-sm">Nome Pessoa Visita</th>
+                            <th class="th-sm">Observação</th>
+                            <th class="th-sm">Status</th>
+                            <th class="th-sm">Usuario</th>
+                            <th class="th-sm">Data Hora</th>
+                            <th class="th-sm">Data Hora Finalizada</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <?php
+
+            // where  DATE_FORMAT(data_hora, '%d/%m/%Y') = '$data'
+            // $result_usuarios = ("SELECT * FROM `testefull` WHERE  `id_status` IN ('1')  AND DATE_FORMAT(data_hora, '%d/%m/%Y') BETWEEN '$data' AND '$data' ORDER BY `testefull`.`data_hora` DESC");
+            // $result_usuarios = ("SELECT * FROM `testefull` WHERE  `id_status` = 1  AND `data_hora` BETWEEN '$data 00:00:00' AND '$data 23:59:59' ORDER BY `testefull`.`data_hora` DESC");
+            // $result_usuarios = ("SELECT * FROM `pcp_recebido` WHERE  `data_hora` BETWEEN '$data 00:00:00' AND '$data 23:59:59' ORDER BY `pcp_recebido`.`data_hora` DESC");
+            $recebidos2 = ("SELECT 
+            producao.*,
+            producao.finalizado 'Data finalizada',
+            recebido.obs,
+            recebido.id as id_pacote,
+            case WHEN recebido.nro_etiqueta <> ''  THEN 'Recebido' ELSE 'Faltando Receber' END 'Status',
+            case WHEN recebido.nro_etiqueta <> ''  THEN recebido.data_hora ELSE producao.data_hora END 'Data Hora Atualizada',
+            case WHEN recebido.nro_etiqueta <> ''  THEN recebido.usuario ELSE producao.usuario END 'Usuario Atualizado'
+            FROM `expedicao` as producao
+            LEFT OUTER JOIN `expedicao_recebido` as recebido on recebido.nro_etiqueta = producao.nro_etiqueta and recebido.finalizado IS NOT NULL and recebido.deleted_at IS NULL
+            WHERE producao.finalizado IS NOT NULL and producao.deleted_at IS NULL and producao.finalizado BETWEEN '$datahoje 00:00:00' AND '$datahoje 23:59:59'
+             ORDER by `id` DESC");
+            
+            $resultado_usuarios = mysqli_query($conexao, $recebidos2);
+            while ($row = mysqli_fetch_assoc($resultado_usuarios)) {
+                if ($row['Status'] == 'Faltando Receber') {
+                    $status = "<b style='color:red;'>Faltando Receber</b>";
+                } else {
+                    $status = "<b style='color:green;'> " . $status = $row['Status']. "</b>";
+
+                }
+
+            ?>
+                <tr>
+                                    <td> <?php echo $row['id'] ?> </td>
+                                    <td> <?php echo $row['nro_documento'] ?> </td>
+                                    <td> <?php echo $row['nro_pedido'] ?> </td>
+                                    <td> <?php echo $row['nro_etiqueta'] ?> </td>
+                                    <td> <?php echo $row['dt_recebimento'] ?> </td>
+                                    <td> <?php echo $row['nro_romaneio_expedicao'] ?> </td>
+                                    <td> <?php echo $row['qtde_volumes'] ?> </td>
+                                    <td> <?php echo $row['qtde_itens'] ?> </td>
+                                    <td> <?php echo $row['status'] ?> </td>
+                                    <td> <?php echo $row['unidade_atual'] ?> </td>
+                                    <td> <?php echo $row['nome_pessoa_visita'] ?> </td>
+                                    <td> <?php echo $row['obs'] ?> </td>
+                                    <td> <?php echo $status ?> </td>
+                                    <td> <?php echo $row['Usuario Atualizado'] ?> </td>
+                                    <td> <?php echo date('d/m/Y H:i:s', strtotime($row['Data Hora Atualizada'])) ?> </td>
+                                    <td> <?php echo date('d/m/Y H:i:s', strtotime($row['Data finalizada'])) ?> </td>
+                            </tr>
+
+            <?php }; ?>
+
+        </tbody>
+    </table>
+<?php
+
+} else {
+
+    // $Datainicio = date('d/m/Y', strtotime($_GET['dateini']));
+    // $Datafinal = date('d/m/Y', strtotime($_GET['datefinal']));
+
+    $Datainicio = $_GET['dateini'];
+    $Datafinal = $_GET['datefinal'];
+    
+?>
+<table >
+
+<thead>
+                        <tr>
+                            <th class="th-sm">id</th>
+                            <th class="th-sm">Nro. Documento</th>
+                            <th class="th-sm">Nro. Pedido</th>
+                            <th class="th-sm">Nro. Etiqueta</th>
+                            <th class="th-sm">Dt. Recebimento</th>
+                            <th class="th-sm">Nro. Romaneio Expedição</th>
+                            <th class="th-sm">Qtde. Volumes</th>
+                            <th class="th-sm">Qtde. Itens</th>
+                            <th class="th-sm">Status</th>
+                            <th class="th-sm">Unidade Atual</th>
+                            <th class="th-sm">Nome Pessoa Visita</th>
+                            <th class="th-sm">Observação</th>
+                            <th class="th-sm">Status</th>
+                            <th class="th-sm">Usuario</th>
+                            <th class="th-sm">Data Hora</th>
+                            <th class="th-sm">Data Hora Finalizada</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <?php
+                        // where  DATE_FORMAT(data_hora, '%d/%m/%Y') = '$data'
+                        // $result_usuarios = ("SELECT * FROM `testefull` WHERE  `id_status` = 1 AND `data_hora` BETWEEN '$Datainicio 00:00:00' AND '$Datafinal 23:59:59' ORDER BY `testefull`.`data_hora` DESC");
+                        // $result_usuarios = ("SELECT * FROM `testefull` WHERE  `id_status` = 1  AND `data_hora` BETWEEN '$Datainicio 00:00:00' AND '$Datafinal 23:59:59' ORDER BY `testefull`.`data_hora` DESC");
+                        // $result_usuarios = ("SELECT * FROM `pcp_recebido` WHERE  `data_hora` BETWEEN '$Datainicio 00:00:00' AND '$Datafinal 23:59:59' ORDER BY `pcp_recebido`.`data_hora` DESC");
+                        $recebidos2 = ("SELECT 
+                    producao.*,
+                    producao.finalizado 'Data finalizada',
+                    recebido.obs,
+                    recebido.id as id_pacote,
+                    case WHEN recebido.nro_etiqueta <> ''  THEN 'Recebido' ELSE 'Faltando Receber' END 'Status',
+                    case WHEN recebido.nro_etiqueta <> ''  THEN recebido.data_hora ELSE producao.data_hora END 'Data Hora Atualizada',
+                    case WHEN recebido.nro_etiqueta <> ''  THEN recebido.usuario ELSE producao.usuario END 'Usuario Atualizado'
+                    FROM `expedicao` as producao
+                    LEFT OUTER JOIN `expedicao_recebido` as recebido on recebido.nro_etiqueta = producao.nro_etiqueta and recebido.finalizado IS NOT NULL and recebido.deleted_at IS NULL
+                    WHERE producao.finalizado BETWEEN '$Datainicio 00:00:00' AND '$Datafinal 23:59:59' and producao.deleted_at IS NULL
+                     ORDER by `id` DESC");
+                        
+                        $resultado_usuarios = mysqli_query($conexao, $recebidos2);
+                        while ($row = mysqli_fetch_assoc($resultado_usuarios)) {
+
+                            if ($row['Status'] == 'Faltando Receber') {
+                                $status = "<b style='color:red;'>Faltando Receber</b>";
+                            } else {
+                                $status = "<b style='color:green;'> " . $status = $row['Status']. "</b>";
+        
+                            }
+    
+
+                        ?>
+                            <tr>
+                                    <td> <?php echo $row['id'] ?> </td>
+                                    <td> <?php echo $row['nro_documento'] ?> </td>
+                                    <td> <?php echo $row['nro_pedido'] ?> </td>
+                                    <td> <?php echo $row['nro_etiqueta'] ?> </td>
+                                    <td> <?php echo $row['dt_recebimento'] ?> </td>
+                                    <td> <?php echo $row['nro_romaneio_expedicao'] ?> </td>
+                                    <td> <?php echo $row['qtde_volumes'] ?> </td>
+                                    <td> <?php echo $row['qtde_itens'] ?> </td>
+                                    <td> <?php echo $row['status'] ?> </td>
+                                    <td> <?php echo $row['unidade_atual'] ?> </td>
+                                    <td> <?php echo $row['nome_pessoa_visita'] ?> </td>
+                                    <td> <?php echo $row['obs'] ?> </td>
+                                    <td> <?php echo $status ?> </td>
+                                    <td> <?php echo $row['Usuario Atualizado'] ?> </td>
+                                    <td> <?php echo date('d/m/Y H:i:s', strtotime($row['Data Hora Atualizada'])) ?> </td>
+                                    <td> <?php echo date('d/m/Y H:i:s', strtotime($row['Data finalizada'])) ?> </td>
+                            </tr>
+
+                        <?php }; ?>
+
+                    </tbody>
+
+</table>
+<?php
+}
+?>

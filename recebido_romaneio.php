@@ -19,7 +19,7 @@ $datahoje = date("Y-m-d");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Histórico-Recebido</title>
+    <title>Histórico-Recebido-Romaneio</title>
 </head>
 
 <body>
@@ -44,19 +44,19 @@ $datahoje = date("Y-m-d");
 
                 <ul class="nav nav-tabs justify-content-center py-4">
                     <li class="nav-item">
-                        <a class="nav-link" href="receber">Receber Pacote</a>
+                        <a class="nav-link" href="receber_romaneio">Receber Romaneio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="recebido">Hitórico Recebido</a>
+                        <a class="nav-link active" href="recebido_romaneio">Hitórico Romaneio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="finalizar">Finalizar Processo</a>
+                        <a class="nav-link" href="finalizar_romaneio">Finalizar Processo Romaneio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="pedido">Excluir Pedido</a>
+                        <a class="nav-link" href="pedido_romaneio">Excluir Pedido Romaneio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="historico_finalizado">Histórico Finalizado</a>
+                        <a class="nav-link" href="historico_finalizado_romaneio">Histórico Finalizado Romaneio</a>
                     </li>
                 </ul>
 
@@ -85,7 +85,7 @@ $datahoje = date("Y-m-d");
             $vazio = "";
         ?>
             <?php
-            echo '<td><a button class="btn btn-success" href="export_recebido.php?dateini=' . "" . '">Clique aqui para fazer o download <p> Referente à Data: ' . $data . '</p> </a></td>';
+            echo '<td><a button class="btn btn-success" href="export_recebido_romaneio.php?dateini=' . "" . '">Clique aqui para fazer o download <p> Referente à Data: ' . $data . '</p> </a></td>';
             echo "<br>";
             ?>
                     </div>
@@ -93,7 +93,7 @@ $datahoje = date("Y-m-d");
              </form>
 
              <button data-toggle="modal" data-target="#receber_total<?php echo $pedido ?>" type="submit" class="btn btn-info">Receber Total</button>
-<form action="receber_total.php" method="POST">
+<form action="receber_total_romaneio.php" method="POST">
     <div class="modal fade" id="receber_total<?php echo $pedido ?>" tabindex="-1" role="dialog"
         aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -129,10 +129,6 @@ $datahoje = date("Y-m-d");
                             <th class="th-sm">Pacote</th>
                             <th class="th-sm">Pedido</th>
                             <th class="th-sm">Cliente</th>
-                            <th class="th-sm">BOX</th>
-                            <th class="th-sm">SKU</th>
-                            <th class="th-sm">Produto</th>
-                            <th class="th-sm">Nota Fiscal</th>
                             <th class="th-sm">Observação</th>
                             <th class="th-sm">Status</th>
                             <th class="th-sm">Usuario</th>
@@ -148,13 +144,13 @@ $datahoje = date("Y-m-d");
                             producao.*,
                             recebido.obs,
                             recebido.id as id_pacote,
-                            case WHEN recebido.pacote <> ''  THEN 'Recebido' ELSE 'Faltando Receber' END 'Status',
-                            case WHEN recebido.pacote <> ''  THEN recebido.data_hora ELSE producao.data_hora END 'Data Hora Atualizada',
-                            case WHEN recebido.pacote <> ''  THEN recebido.usuario ELSE producao.usuario END 'Usuario Atualizado'
-                            FROM `db` as producao
-                            LEFT OUTER JOIN `pcp_recebido` as recebido  on recebido.pacote = producao.pacote and recebido.deleted_at IS NULL and recebido.finalizado IS NULL
+                            case WHEN recebido.nro_etiqueta <> ''  THEN 'Recebido' ELSE 'Faltando Receber' END 'Status',
+                            case WHEN recebido.nro_etiqueta <> ''  THEN recebido.data_hora ELSE producao.data_hora END 'Data Hora Atualizada',
+                            case WHEN recebido.nro_etiqueta <> ''  THEN recebido.usuario ELSE producao.usuario END 'Usuario Atualizado'
+                            FROM `expedicao` as producao
+                            LEFT OUTER JOIN `expedicao_recebido` as recebido  on recebido.nro_etiqueta = producao.nro_etiqueta and recebido.deleted_at IS NULL and recebido.finalizado IS NULL
                             WHERE producao.deleted_at IS NULL and producao.finalizado IS NULL
-                             ORDER by `id` DESC");
+                             ORDER by recebido.`id` DESC");
 
                             // $recebidos2 =("SELECT * FROM `testefull` WHERE `usuario` = '$usuario' AND `data_hora` BETWEEN '$datahorainicio' AND '$datahorafinal' ORDER BY `data_hora` DESC");                   
                             $recebidos3 = mysqli_query($conexao, $recebidos2);
@@ -173,13 +169,9 @@ $datahoje = date("Y-m-d");
                                     <input id= "id<?php echo $row['id'] ?>" type="hidden" value="<?php echo $row['id'] ?>" >
 
                                     <td> <?php echo $row['id'] ?> </td>
-                                    <td> <?php echo $row['pacote'] ?> </td>
-                                    <td> <?php echo $row['pedido'] ?> </td>
-                                    <td> <?php echo $row['nome_cliente'] ?> </td>
-                                    <td> <?php echo $row['box'] ?> </td>
-                                    <td> <?php echo $row['sku'] ?> </td>
-                                    <td> <?php echo $row['descricao'] ?> </td>
-                                    <td> <?php echo $row['nota_fiscal'] ?> </td>
+                                    <td> <?php echo $row['nro_etiqueta'] ?> </td>
+                                    <td> <?php echo $row['nro_pedido'] ?> </td>
+                                    <td> <?php echo $row['nome_pessoa_visita'] ?> </td>
                                     <td> <?php echo $row['obs'] ?> </td>
                                     <td> <?php echo $status ?> </td>
                                     <td> <?php echo $row['Usuario Atualizado'] ?> </td>
@@ -191,8 +183,8 @@ $datahoje = date("Y-m-d");
                                                 ?>
                                                         <button style='font-size:24px; border:none; color: limegreen; background-color: transparent;'><i  data-toggle="modal" data-target="#receber<?php echo $row['id'] ?>" class='fas fa-arrow-right' aria-hidden="true"></i></button>
                                                         
-                                                        <form action="receber_pacote.php" method="POST" enctype="multipart/form-data">
-                                                                    <input name="biper" type="hidden" value="<?php echo $row['pacote'] ?>" >
+                                                        <form action="receber_pacote_romaneio.php" method="POST" enctype="multipart/form-data">
+                                                                    <input name="biper" type="hidden" value="<?php echo $row['nro_etiqueta'] ?>" >
                                                                 <div class="modal fade" id="receber<?php echo $row['id'] ?>" tabindex="-1" role="dialog"
                                                                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                                             <div class="modal-dialog" role="document">
@@ -206,7 +198,7 @@ $datahoje = date("Y-m-d");
                                                                                     </div>
                                                                                     <div class="modal-body">
                                                                                         Receber o Pacote: <b>
-                                                                                            <?php echo $row['pacote'] ?> </b> ?
+                                                                                            <?php echo $row['nro_etiqueta'] ?> </b> ?
                                                                                     </div>
                                                                                     <div class="modal-body">
                                                                                              <div class="form-group shadow-textarea">
@@ -229,12 +221,11 @@ $datahoje = date("Y-m-d");
                                             }else{
                                                 ?>
 
-                                                    <form action="reimpressao_etiqueta.php" method="POST" enctype="multipart/form-data">
+                                                    <!-- <form action="reimpressao_etiqueta.php" method="POST" enctype="multipart/form-data">
                                                         <button style='font-size:24px; border:none; background-color: transparent;'><i class='fas fa-print' aria-hidden="true"></i></button>
-                                                        <!-- <i class='fas fa-print' style='font-size:24px;color:black' aria-hidden="true"></i> -->
                                                         <input name="pacote" type="hidden" value="<?php echo $row['pacote'] ?>" >
                                                         
-                                                    </form>
+                                                    </form> -->
                                                     <?php 
                                                        if( $row['qtd_itens'] > 1 ){
                                                            ?>
@@ -251,7 +242,7 @@ $datahoje = date("Y-m-d");
                                                     </button>
                                                 </div>
 
-                                                <form action="deletar_item.php" method="POST">
+                                                <form action="deletar_item_romaneio.php" method="POST">
                                                                         <div class="modal fade" id="deletar<?php echo $row['id'] ?>" tabindex="-1" role="dialog"
                                                                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                                             <div class="modal-dialog" role="document">
@@ -265,11 +256,11 @@ $datahoje = date("Y-m-d");
                                                                                     </div>
                                                                                     <div class="modal-body">
                                                                                         Você tem certeza que deseja excluir o Pacote: <b>
-                                                                                            <?php echo $row['pacote'] ?> </b> ?
+                                                                                            <?php echo $row['nro_etiqueta'] ?> </b> ?
                                                                                     </div>
                                                                                     <div class="modal-body">
                                                                                             Referente ao Pedido: <b>
-                                                                                            <?php echo $row['pedido'] ?> </b> ?
+                                                                                            <?php echo $row['nro_pedido'] ?> </b> ?
                                                                                     </div>
 
                                                                                     <input name="id_pacote" type="hidden" id="inputName"
@@ -304,7 +295,7 @@ $datahoje = date("Y-m-d");
             $Datainicio = date('Y-m-d', strtotime($_POST['dateinicio']));
             $Datafinal = date('Y-m-d', strtotime($_POST['datefinal']));
 
-            echo '</div></div> <div class="container" style="text-align-last: center"> <td><a button class="btn btn-success" href="export_recebido.php?dateini=' . $Datainicio . ' 00:00:00' . '&datefinal=' . $Datafinal . ' 23:59:59' . '">Clique aqui para fazer o download  <p> Referente à Data: ' . date('d/m/Y', strtotime($Datainicio)) . " | " . date('d/m/Y', strtotime($Datafinal)) . '  </p>  </a></td> </div>';
+            echo '</div></div> <div class="container" style="text-align-last: center"> <td><a button class="btn btn-success" href="export_recebido_roamaneio.php?dateini=' . $Datainicio . ' 00:00:00' . '&datefinal=' . $Datafinal . ' 23:59:59' . '">Clique aqui para fazer o download  <p> Referente à Data: ' . date('d/m/Y', strtotime($Datainicio)) . " | " . date('d/m/Y', strtotime($Datafinal)) . '  </p>  </a></td> </div>';
             echo "<br>";
 ?>
 
@@ -317,10 +308,6 @@ $datahoje = date("Y-m-d");
                             <th class="th-sm">Pacote</th>
                             <th class="th-sm">Pedido</th>
                             <th class="th-sm">Cliente</th>
-                            <th class="th-sm">BOX</th>
-                            <th class="th-sm">SKU</th>
-                            <th class="th-sm">Produto</th>
-                            <th class="th-sm">Nota Fiscal</th>
                             <th class="th-sm">Observação</th>
                             <th class="th-sm">Status</th>
                             <th class="th-sm">Usuario</th>
@@ -331,18 +318,19 @@ $datahoje = date("Y-m-d");
                 <tbody>
 
                     <?php
-                    // $recebidos2 = ("SELECT * FROM `pcp_recebido` WHERE `data_hora` BETWEEN '$Datainicio 00:00:00' AND '$Datainicio 00:00:009' ORDER BY `pcp_recebido`.`data_hora` DESC");
+
                     $recebidos2 = ("SELECT 
                     producao.*,
                     recebido.obs,
                     recebido.id as id_pacote,
-                    case WHEN recebido.pacote <> '' THEN 'Recebido' ELSE 'Faltando Receber' END 'Status',
-                    case WHEN recebido.pacote <> '' THEN recebido.data_hora ELSE producao.data_hora END 'Data Hora Atualizada',
-                    case WHEN recebido.pacote <> '' THEN recebido.usuario ELSE producao.usuario END 'Usuario Atualizado'
-                    FROM `db` as producao
-                    LEFT OUTER JOIN `pcp_recebido` as recebido  on recebido.pacote = producao.pacote and recebido.deleted_at IS NULL and recebido.finalizado IS NULL
+                    case WHEN recebido.nro_etiqueta <> ''  THEN 'Recebido' ELSE 'Faltando Receber' END 'Status',
+                    case WHEN recebido.nro_etiqueta <> ''  THEN recebido.data_hora ELSE producao.data_hora END 'Data Hora Atualizada',
+                    case WHEN recebido.nro_etiqueta <> ''  THEN recebido.usuario ELSE producao.usuario END 'Usuario Atualizado'
+                    FROM `expedicao` as producao
+                    LEFT OUTER JOIN `expedicao_recebido` as recebido  on recebido.nro_etiqueta = producao.nro_etiqueta and recebido.deleted_at IS NULL and recebido.finalizado IS NULL
                     WHERE producao.`data_hora` BETWEEN '$Datainicio 00:00:00' AND '$Datafinal 23:59:59' and producao.deleted_at IS NULL and producao.finalizado IS NULL
-                     ORDER by `id` DESC");
+                     ORDER by recebido.`id` DESC");
+
 
                     // $recebidos2 =("SELECT * FROM `testefull` WHERE `usuario` = '$usuario' AND `data_hora` BETWEEN '$datahorainicio' AND '$datahorainicio' ORDER BY `data_hora` DESC");                   
                     $recebidos3 = mysqli_query($conexao, $recebidos2);
@@ -358,13 +346,9 @@ $datahoje = date("Y-m-d");
                     ?>
                         <tr>
                                     <td> <?php echo $row['id'] ?> </td>
-                                    <td> <?php echo $row['pacote'] ?> </td>
-                                    <td> <?php echo $row['pedido'] ?> </td>
-                                    <td> <?php echo $row['nome_cliente'] ?> </td>
-                                    <td> <?php echo $row['box'] ?> </td>
-                                    <td> <?php echo $row['sku'] ?> </td>
-                                    <td> <?php echo $row['descricao'] ?> </td>
-                                    <td> <?php echo $row['nota_fiscal'] ?> </td>
+                                    <td> <?php echo $row['nro_etiqueta'] ?> </td>
+                                    <td> <?php echo $row['nro_pedido'] ?> </td>
+                                    <td> <?php echo $row['nome_pessoa_visita'] ?> </td>
                                     <td> <?php echo $row['obs'] ?> </td>
                                     <td> <?php echo $status ?> </td>
                                     <td> <?php echo $row['Usuario Atualizado'] ?> </td>
@@ -372,48 +356,49 @@ $datahoje = date("Y-m-d");
                                     <td class="text-center">
                                         <?php if( $row['id_pacote'] == "" ){
                                             ?>
-                                              <button style='font-size:24px; border:none; color: limegreen; background-color: transparent;'><i  data-toggle="modal" data-target="#receber<?php echo $row['id'] ?>" class='fas fa-arrow-right' aria-hidden="true"></i></button>
+                                              <!-- <button style='font-size:24px; border:none; color: limegreen; background-color: transparent;'><i  data-toggle="modal" data-target="#receber<?php echo $row['id'] ?>" class='fas fa-arrow-right' aria-hidden="true"></i></button> -->
+                                                <i id="" data-toggle="modal" data-target="#receber<?php echo $row['id'] ?>" class='fas fa-arrow-right' style='font-size:24px; border:none; color: limegreen; background-color: transparent;'></i>
                                                         
-                                              <form action="receber_pacote.php" method="POST" enctype="multipart/form-data">
-                                                          <input name="biper" type="hidden" value="<?php echo $row['pacote'] ?>" >
-                                                      <div class="modal fade" id="receber<?php echo $row['id'] ?>" tabindex="-1" role="dialog"
-                                                                  aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                                  <div class="modal-dialog" role="document">
-                                                                      <div class="modal-content">
-                                                                          <div class="modal-header ">
-                                                                              <h5 class="modal-title" id="exampleModalLabel">Receber Pacote</h5>
-                                                                              <button type="button" class="close" data-dismiss="modal"
-                                                                                  aria-label="Close">
-                                                                                  <span aria-hidden="true">&times;</span>
-                                                                              </button>
-                                                                          </div>
-                                                                          <div class="modal-body">
-                                                                              Receber o Pacote: <b>
-                                                                                  <?php echo $row['pacote'] ?> </b> ?
-                                                                          </div>
-                                                                          <div class="modal-body">
-                                                                                   <div class="form-group shadow-textarea">
-                                                                                      <label for="exampleFormControlTextarea6"><b>Observação</b></label>
-                                                                                      <textarea style="text-transform: uppercase;" autofocus name="observacao" value="" class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="3"></textarea>
-                                                                                       </div> 
-                                                                          </div>
+                                                        <form action="receber_pacote_romaneio.php" method="POST" enctype="multipart/form-data">
+                                                                    <input name="biper" type="hidden" value="<?php echo $row['nro_etiqueta'] ?>" >
+                                                                <div class="modal fade" id="receber<?php echo $row['id'] ?>" tabindex="-1" role="dialog"
+                                                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                            <div class="modal-dialog" role="document">
+                                                                                <div class="modal-content">
+                                                                                    <div class="modal-header ">
+                                                                                        <h5 class="modal-title" id="exampleModalLabel">Receber Pacote</h5>
+                                                                                        <button type="button" class="close" data-dismiss="modal"
+                                                                                            aria-label="Close">
+                                                                                            <span aria-hidden="true">&times;</span>
+                                                                                        </button>
+                                                                                    </div>
+                                                                                    <div class="modal-body">
+                                                                                        Receber o Pacote: <b>
+                                                                                            <?php echo $row['nro_etiqueta'] ?> </b> ?
+                                                                                    </div>
+                                                                                    <div class="modal-body">
+                                                                                             <div class="form-group shadow-textarea">
+                                                                                                <label for="exampleFormControlTextarea6"><b>Observação</b></label>
+                                                                                                <textarea style="text-transform: uppercase;" autofocus name="observacao" value="" class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="3"></textarea>
+                                                                                                 </div> 
+                                                                                    </div>
 
-                                                                          <input name="id_pacote" type="hidden" id="inputName"
-                                                                              value="<?php echo $row['id_pacote'] ?>" class="form-control validate">
+                                                                                    <input name="id_pacote" type="hidden" id="inputName"
+                                                                                        value="<?php echo $row['id_pacote'] ?>" class="form-control validate">
 
-                                                                          <div class="modal-footer justify-content-center">
-                                                                              <button type="submit" class="btn btn-primary">Sim</button>
-                                                                          </div>
-                                                                      </div>
-                                                                  </div>
-                                                              </div>
-                                                      </form>
+                                                                                    <div class="modal-footer justify-content-center">
+                                                                                        <button type="submit" class="btn btn-primary">Sim</button>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                </form>
                                                               <?php
                                             }else{
                                                 ?>
                                                 
                                                 <i id="excluir_item<?php echo $row['id'] ?>" data-toggle="modal" data-target="#deletar<?php echo $row['id'] ?>" class='fas fa-trash-alt' style='font-size:24px;color:red'></i>
-                                                <form action="deletar_item.php" method="POST">
+                                                <form action="deletar_item_romaneio.php" method="POST">
                                                                         <div class="modal fade" id="deletar<?php echo $row['id'] ?>" tabindex="-1" role="dialog"
                                                                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                                             <div class="modal-dialog" role="document">
@@ -427,11 +412,11 @@ $datahoje = date("Y-m-d");
                                                                                     </div>
                                                                                     <div class="modal-body">
                                                                                         Você tem certeza que deseja excluir o Pacote: <b>
-                                                                                            <?php echo $row['pacote'] ?> </b> ?
+                                                                                            <?php echo $row['nro_etiqueta'] ?> </b> ?
                                                                                     </div>
                                                                                     <div class="modal-body">
                                                                                             Referente ao Pedido: <b>
-                                                                                            <?php echo $row['pedido'] ?> </b> ?
+                                                                                            <?php echo $row['nro_pedido'] ?> </b> ?
                                                                                     </div>
 
                                                                                     <input name="id_pacote" type="hidden" id="inputName"
