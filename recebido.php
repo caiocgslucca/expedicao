@@ -109,6 +109,12 @@ $datahoje = date("Y-m-d");
                     Você tem certeza que deseja Receber todos os Pacote: <b>
                         <?php echo $pedido ?> </b> ?
                 </div>
+                <div class="modal-body mx-3">
+                     <div class="form-group shadow-textarea">
+                        <label for="exampleFormControlTextarea6"><b>Observação</b></label>
+                        <textarea required style="text-transform: uppercase;" autofocus name="observacao" value="" class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="3"></textarea>
+                         </div> 
+            </div>
                 <input name="pedido" type="hidden" id="inputName"
                     value="<?php echo $pedido ?>" class="form-control validate">
                 <div class="modal-footer justify-content-center">
@@ -211,7 +217,7 @@ $datahoje = date("Y-m-d");
                                                                                     <div class="modal-body">
                                                                                              <div class="form-group shadow-textarea">
                                                                                                 <label for="exampleFormControlTextarea6"><b>Observação</b></label>
-                                                                                                <textarea style="text-transform: uppercase;" autofocus name="observacao" value="" class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="3"></textarea>
+                                                                                                <textarea required style="text-transform: uppercase;" autofocus name="observacao" value="" class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="3"></textarea>
                                                                                                  </div> 
                                                                                     </div>
 
@@ -394,7 +400,7 @@ $datahoje = date("Y-m-d");
                                                                           <div class="modal-body">
                                                                                    <div class="form-group shadow-textarea">
                                                                                       <label for="exampleFormControlTextarea6"><b>Observação</b></label>
-                                                                                      <textarea style="text-transform: uppercase;" autofocus name="observacao" value="" class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="3"></textarea>
+                                                                                      <textarea required style="text-transform: uppercase;" autofocus name="observacao" value="" class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="3"></textarea>
                                                                                        </div> 
                                                                           </div>
 

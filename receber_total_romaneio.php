@@ -11,6 +11,7 @@ include('Header_CSS_JS.php');
 // include('heder_estacao.php');
 $usuario = $_SESSION['usuario'];
 $destino = $_POST['destino'];
+$obs = $_POST['observacao'];
 
 
 date_default_timezone_set('America/recife');
@@ -52,7 +53,7 @@ SELECT producao.nro_documento
 ,'$usuario'
 ,'$datahora'
 ,NULL
-,''
+,'$obs'
 FROM `expedicao` as producao 
 LEFT OUTER JOIN `expedicao_recebido` as recebido on recebido.nro_etiqueta = producao.nro_etiqueta and recebido.deleted_at IS NULL and recebido.finalizado IS NULL
 WHERE producao.deleted_at IS NULL and producao.finalizado IS NULL and recebido.nro_etiqueta is null;
