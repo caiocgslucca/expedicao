@@ -109,7 +109,7 @@ $datahorafinal = (date('Y-m-d 23:59:59'));
                 
     </div>
     <div class="col-auto align-self-center col-md-2 offset-md-4">
-    <input placeholder="Bipar Pacote" name="biper" value="" autofocus class="form-control z-depth-1"
+    <input required placeholder="Bipar Pacote" name="biper" value="" autofocus class="form-control z-depth-1"
                             id="exampleFormControlTextarea6" rows="3"></input>
     </div>
     <div class="col-auto align-self-center">

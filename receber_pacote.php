@@ -58,7 +58,6 @@ while ($rows = mysqli_fetch_assoc($recebidos)) {
                                   </div>
                               </div>
                               <div class="modal-footer d-flex justify-content-center">
-                                  <!-- <button submit class="btn btn-indigo">Voltar<i class="fas fa-paper-plane-o ml-1"></i></button> -->
                               </div>
                           </div>
                       </div>
@@ -72,7 +71,7 @@ while ($rows = mysqli_fetch_assoc($recebidos)) {
                   }
               </script>
           <?php
-                       echo '<meta http-equiv="refresh" content="3;URL=receber.php" />';
+                       echo '<meta http-equiv="refresh" content="1;URL=receber" />';
               die();
          }
         
@@ -116,7 +115,7 @@ while ($rows = mysqli_fetch_assoc($recebidos)) {
                             }
                         </script>
                     <?php
-                                 echo '<meta http-equiv="refresh" content="3;URL=receber.php" />';
+                                 echo '<meta http-equiv="refresh" content="1;URL=receber" />';
                                  die();
                     }else{
 
@@ -160,7 +159,7 @@ while ($rows = mysqli_fetch_assoc($recebidos)) {
                                     }
                                 </script>
                             <?php
-                                 echo '<meta http-equiv="refresh" content="3;URL=receber.php" />';
+                                 echo '<meta http-equiv="refresh" content="1;URL=receber" />';
                                  die();
                         }else{
                             $obs = strtoupper($_POST['observacao']);
@@ -168,7 +167,7 @@ while ($rows = mysqli_fetch_assoc($recebidos)) {
                                                 (NULL, '$pacote', '$pedido', '$nota_fiscal', '$usuario', '$datahora',null,null,'$obs')";
                                             $salvar = mysqli_query($conexao, $insert_sql);
 
-                                            echo '<meta http-equiv="refresh" content="0;URL=etiqueta.php" />';
+                                            echo '<meta http-equiv="refresh" content="0;URL=etiqueta" />';
                                             
                                             
                         }

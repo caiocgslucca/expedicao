@@ -125,7 +125,6 @@ $datahoje = date("Y-m-d");
     </div>
 </form>
 
-
             <div class="flex-center flex-column" style="display:block;">
                 <div class="card card-body">
                     <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
@@ -161,7 +160,8 @@ $datahoje = date("Y-m-d");
                             LEFT OUTER JOIN `pcp_recebido` as recebido  on recebido.pacote = producao.pacote and recebido.deleted_at IS NULL and recebido.finalizado IS NULL
                             WHERE producao.deleted_at IS NULL and producao.finalizado IS NULL
                              ORDER by `id` DESC");
-
+                            // echo $recebidos2;
+                            // die();
                             // $recebidos2 =("SELECT * FROM `testefull` WHERE `usuario` = '$usuario' AND `data_hora` BETWEEN '$datahorainicio' AND '$datahorafinal' ORDER BY `data_hora` DESC");                   
                             $recebidos3 = mysqli_query($conexao, $recebidos2);
 
@@ -349,7 +349,7 @@ $datahoje = date("Y-m-d");
                     LEFT OUTER JOIN `pcp_recebido` as recebido  on recebido.pacote = producao.pacote and recebido.deleted_at IS NULL and recebido.finalizado IS NULL
                     WHERE producao.`data_hora` BETWEEN '$Datainicio 00:00:00' AND '$Datafinal 23:59:59' and producao.deleted_at IS NULL and producao.finalizado IS NULL
                      ORDER by `id` DESC");
-
+                   
                     // $recebidos2 =("SELECT * FROM `testefull` WHERE `usuario` = '$usuario' AND `data_hora` BETWEEN '$datahorainicio' AND '$datahorainicio' ORDER BY `data_hora` DESC");                   
                     $recebidos3 = mysqli_query($conexao, $recebidos2);
 

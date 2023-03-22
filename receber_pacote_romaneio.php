@@ -83,7 +83,7 @@ while ($rows = mysqli_fetch_assoc($recebidos)) {
                   }
               </script>
           <?php
-                       echo '<meta http-equiv="refresh" content="3;URL=recebido_romaneio" />';
+                       echo '<meta http-equiv="refresh" content="1;URL=recebido_romaneio" />';
               die();
          }else{
         
@@ -127,7 +127,7 @@ while ($rows = mysqli_fetch_assoc($recebidos)) {
                             }
                         </script>
                     <?php
-                                 echo '<meta http-equiv="refresh" content="3;URL=receber_romaneio" />';
+                                 echo '<meta http-equiv="refresh" content="1;URL=receber_romaneio" />';
                                  die();
                     }else{
 
@@ -173,7 +173,7 @@ while ($rows = mysqli_fetch_assoc($recebidos)) {
                                     }
                                 </script>
                             <?php
-                                 echo '<meta http-equiv="refresh" content="3;URL=receber_romaneio" />';
+                                 echo '<meta http-equiv="refresh" content="1;URL=receber_romaneio" />';
                                  die();
                         }else{
                             $obs = strtoupper($_POST['observacao']);
