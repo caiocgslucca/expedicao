@@ -1,7 +1,7 @@
 SELECT producao.pacote,
 case WHEN recebido.pacote <> '' THEN 'Recebido' ELSE 'Faltando Receber ' END 'EAD Status',
-case WHEN expedicao.nro_etiqueta = producao.pacote THEN 'Na base' ELSE 'Faltando na Base' END 'Status Base Romaneio',
-case WHEN expedicao_recebido.nro_etiqueta <> '' THEN 'Recebido' ELSE 'Faltando Receber' END 'Romaneio Status'
+case WHEN expedicao.nro_etiqueta = producao.pacote THEN 'Na base Romaneio' ELSE 'Faltando na Base Romaneio' END 'Status Base Romaneio',
+case WHEN expedicao_recebido.nro_etiqueta <> '' THEN 'Recebido Romaneio' ELSE 'Faltando Receber Romaneio' END 'Romaneio Status'
 FROM `db` as producao 
 LEFT OUTER JOIN `pcp_recebido` as recebido on recebido.pacote = producao.pacote and recebido.deleted_at IS NULL and recebido.finalizado IS NULL
 LEFT OUTER JOIN `expedicao` as expedicao on expedicao.nro_etiqueta = producao.pacote and expedicao.deleted_at IS NULL and expedicao.finalizado IS NULL
