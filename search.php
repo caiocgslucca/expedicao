@@ -49,7 +49,7 @@ $datahoje = date("Y-m-d");
 
                             <div class="col-sm-3">
                                 <div class="md-form md-outline input-with-post-icon datepicker">
-                                <input required placeholder="Bipar Pacote" name="biper" value="" autofocus class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="3"></input>
+                                <input required placeholder="Bipar Pedido" name="biper" value="" autofocus class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="3"></input>
                                 </div>
                             </div>
                            
