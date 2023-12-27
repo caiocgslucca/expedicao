@@ -37,6 +37,7 @@ $datahora = (date('H:i:s d-m-Y'));
                     <!-- <a class="dropdown-item" href="gerenciar.php">Gerenciar</a> -->
                     <a class="dropdown-item" href="importar_csv">Importar CSV</a>
                     <!-- <a class="dropdown-item" href="pesquisar.php">Pesquisar</a> -->
+                    <a class="dropdown-item" href="search">Pesquisar EAD</a>
                     <a class="dropdown-item" href="logout">Sair</a>
                 </div>
             </div>
@@ -51,7 +52,6 @@ $datahora = (date('H:i:s d-m-Y'));
                     <!-- <a class="dropdown-item" href="receber_pcp.php">Receber PCP</a> -->
                     <!-- <a class="dropdown-item" href="gerenciar.php">Gerenciar</a> -->
                     <a class="dropdown-item" href="importar_csv_romaneio">Importar CSV Romaneio</a>
-                    <!-- <a class="dropdown-item" href="pesquisar.php">Pesquisar</a> -->
                     <a class="dropdown-item" href="logout">Sair</a>
                 </div>
             </div>
